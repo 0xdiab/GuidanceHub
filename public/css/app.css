@@ -1,14 +1,14 @@
 /* Global Rules */
 :root{
     --main-color: #6A9C89;
-    --text-light-color: #FFF5E4;
-    --text-dark-color: #143D60;
+    --light-color: #FFF5E4;
+    --dark-color: #143D60;
     --orange-color: #DF6D14;
 
 }
 
 .logo{
-    color: var(--text-dark-color);
+    color: var(--dark-color);
 }
 
 h1>span,
@@ -22,19 +22,50 @@ p>a{
     color: var(--orange-color);
 }
 
+.btn-nav {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    line-height: 1.3;
+    color: var(--light-color) !important;
+    background-color: var(--dark-color);
+}
+.btn-nav:hover {
+    color: var(--orange-color) !important;
+}
 /* End of Global Rules */
 
+/* Navbar */
+.navbar {
+    background-color: var(--light-color);
+}
+
+.navbar .navbar-brand {
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+.navbar .navbar-nav .nav-link,
+.navbar .navbar-nav .nav-link{
+    font-size: 16.5px;
+    color: var(--dark-color);
+}
 
 
+/* End of Navbar */
 
+/* sign section */
+.sign-section {
+    
+}
 
+/* End of sign-section */
 
 /* Footer */
 .footer{
     padding-top: 30px;
     padding-bottom: 30px;
-    color: var(--text-light-color);
-    background-color: var(--text-dark-color);
+    color: var(--light-color);
+    background-color: var(--dark-color);
 }
 
 .footer p {
