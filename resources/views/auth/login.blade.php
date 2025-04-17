@@ -6,14 +6,14 @@
 @endsection
 
 {{-- remove navbar --}}
-{{-- @section('navbar') @endsection --}}
+@section('navbar') @endsection
 
 {{-- remove footer --}}
-{{-- @section('footer') @endsection --}}
+@section('footer') @endsection
 
 {{-- Content --}}
 @section("content")
-<section class="login-section d-flex justify-content-center py-4">
+<section class="login-section sign-section d-flex justify-content-center py-4">
     {{-- Login Form --}}
     <div class="login-form">
         <form method="POST" action="{{ route('login') }}">
