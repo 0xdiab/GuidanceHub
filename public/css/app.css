@@ -1,12 +1,14 @@
 /* Global Rules */
 :root{
-    --main-color: #6A9C89;
+    --main-color: #afdb83;
     --light-color: #FFF5E4;
     --dark-color: #143D60;
-    --orange-color: #DF6D14;
+    --orange-color: #ff8436;
 
 }
-
+body {
+    height: 100vh;
+}
 .logo{
     color: var(--dark-color);
 }
@@ -55,9 +57,99 @@ p>a{
 
 /* sign section */
 .sign-section {
-    
+    height: 100vh;
+    align-items: center;
+    background-color: var(--light-color);
 }
 
+.sign-section .content {
+    border-radius: 3px;
+    padding-right: 3rem;
+    padding-left: 3rem;
+    background-color: var(--dark-color);
+    box-shadow: 1px 1px 20px 6px hsl(26.31deg 83.54% 47.65% / 17%);
+}
+
+.sign-section .content .login-form {
+    width: 70%;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-right: 3rem;
+    border-right: 2px solid var(--main-color);
+}
+
+.sign-section .content .login-form label {
+    color: var(--main-color);
+    margin-bottom: .3rem;
+}
+
+.sign-section .content .login-form input {
+    width: 100%;
+    border-radius: 0;
+    padding: .7rem;
+    background-color: transparent;
+    border: unset;
+    border-bottom: 2px solid var(--main-color);
+    transition: all .2s ease-in-out;
+}
+
+.sign-section .content .login-form input::placeholder {
+    color:rgb(175, 219, 131, .3);
+}
+
+.sign-section .content .login-form input:focus {
+    outline: 0;
+    color: var(--orange-color);
+    box-shadow: unset;
+    border-radius: unset;
+    border-bottom: 2px solid var(--orange-color);
+}
+
+.sign-section .content .login-form p {
+    color: var(--main-color);
+    margin-bottom: 0;
+}
+
+.sign-section .content .login-form a{
+    text-decoration: unset;
+    transition: all .2s ease-in-out;
+}
+
+.sign-section .content .login-form a:hover {
+    color: var(--light-color)
+}
+
+.sign-section .content .login-form .btn-login {
+    width: 100%;
+    padding: .7rem;
+    background-color: var(--main-color);
+    border-radius: 3px;
+    font-weight: 500;
+    transition: all .25s ease-in-out;
+}
+
+.sign-section .content .login-form .btn-login:hover {
+    background-color: var(--orange-color);   
+}
+
+.sign-section .content .login-content {
+    padding-left: 1.5rem;
+}
+
+.sign-section .content .login-content .icon {
+    color: var(--orange-color);
+    height: 55px;
+}
+
+.sign-section .content .login-content .icon i {
+    font-size: 2.4rem;
+    line-height: 55px;
+}
+
+.sign-section .content .login-content h1 {
+    color: var(--main-color);
+    font-size: 2.2rem;
+}
 /* End of sign-section */
 
 /* Footer */
