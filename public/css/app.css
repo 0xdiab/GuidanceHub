@@ -4,11 +4,12 @@
     --light-color: #FFF5E4;
     --dark-color: #143D60;
     --orange-color: #ff8436;
-
 }
+
 body {
     height: 100vh;
 }
+
 .logo{
     color: var(--dark-color);
 }
@@ -82,6 +83,7 @@ p>a{
 .sign-section .content .login-form label {
     color: var(--main-color);
     margin-bottom: .3rem;
+    font-weight: 500;
 }
 
 .sign-section .content .login-form input {
@@ -104,6 +106,25 @@ p>a{
     box-shadow: unset;
     border-radius: unset;
     border-bottom: 2px solid var(--orange-color);
+}
+.sign-section .content .login-form .form-select {
+    background-color: transparent;
+    color: var(--main-color);
+    border-radius: 0;
+    border: 0;
+    border-bottom: 2px solid var(--main-color);
+}
+
+.sign-section .content .login-form .form-select:focus {
+    box-shadow: unset;
+    border: 0;
+    border-bottom: 2px solid var(--orange-color);
+}
+
+.sign-section .content .login-form .form-select option {
+    background-color: var(--light-color);
+    border-radius: 0;
+    color: var(--dark-color);
 }
 
 .sign-section .content .login-form p {
@@ -151,6 +172,25 @@ p>a{
     color: var(--main-color);
     font-size: 2.2rem;
 }
+
+.register-section {
+    height: auto;
+}
+
+.register-section .login-form{
+    width: 100% !important;
+}
+.register-section .avatar-upload {
+
+}
+.register-section .avatar-upload .avatar-edit{
+}
+.register-section .avatar-upload .avatar-edit input[type="file"] {
+    color: var(--main-color);
+}
+
+
+
 /* End of sign-section */
 
 /* Footer */
