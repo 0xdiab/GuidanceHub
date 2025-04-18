@@ -15,7 +15,7 @@
         {{-- other css files --}}
         @yield("styles")
     </head>
-    <body class="font-sans antialiased">
+    <body>
 
         <div class="app">
             
@@ -24,15 +24,10 @@
                 @include('include.navbar')
             @show
 
-            {{-- Container --}}
-            <div class="container">
-                <!-- Page Content -->
-                <main>
-                    @yield("content")
-                </main>
-            </div>
-            {{-- End of container --}}
-
+            <!-- Page Content -->
+            <main class="main-content">
+                @yield("content")
+            </main>
 
             {{-- Navbar --}}
             @section('footer')
