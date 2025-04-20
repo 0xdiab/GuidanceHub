@@ -17,8 +17,19 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('is_admin')->default(0);
+            $table->string('position');
+            $table->decimal('session_price',8,2)->nullable();
+            $table->string('image')->nullable();
+            $table->string('linkedin_url')->nullable();
+            $table->string('x_url')->nullable();
+            $table->string('cv_url')->nullable();
+            $table->string('github_url')->nullable();
+            $table->enum('gender', ['male', 'female'])->nullable();
+            $table->enum('account_type', ['mentors', 'mentee'])->default('mentee');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
