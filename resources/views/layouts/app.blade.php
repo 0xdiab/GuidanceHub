@@ -29,7 +29,7 @@
                 @yield("content")
             </main>
 
-            {{-- Navbar --}}
+            {{-- footer --}}
             @section('footer')
                 @include('include.footer')
             @show
