@@ -21,7 +21,6 @@
             <div class="login-form">
                 <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                     @csrf
-
                     {{-- Avatar --}}
                     <div class="form-group">
                         <label for="imageUpload">Avatar</label>
@@ -70,6 +69,20 @@
                             required autocomplete="new-password" placeholder="Type your password agian" />
 
                         <error :messages="$errors - > get('password_confirmation')" class="mt-2" />
+                    </div>
+
+                    {{-- Current Position --}}
+                    <div class="row mt-4">
+                        <div class="col">
+                            <label for="position">Current Position</label>
+                            <input id="position" class="form-control" type="text" name="position"
+                            placeholder="Type your current position" />
+                        </div>
+                        <div class="col">
+                            <label for="session_price">Session Price</label>
+                            <input id="session_price" class="form-control" type="text" name="session_price"
+                            placeholder="Type your Session Price" />
+                        </div>
                     </div>
 
                     {{-- Social Media URLs --}}
