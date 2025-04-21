@@ -21,6 +21,17 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_admin',
+        'position',
+        'session_price',
+        'is_admin',
+        'image',
+        'linkedin_url',
+        'x_url',
+        'cv_url',
+        'github_url',
+        'gender',
+        'account_type'
     ];
 
     /**
