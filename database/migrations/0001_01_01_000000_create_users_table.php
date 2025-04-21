@@ -18,7 +18,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('is_admin')->default(0);
-            $table->string('position');
+            $table->string('position')->nullable();
+            $table->string('summary')->nullable();
             $table->decimal('session_price',8,2)->nullable();
             $table->string('image')->nullable();
             $table->string('linkedin_url')->nullable();
