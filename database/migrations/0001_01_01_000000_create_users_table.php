@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('cv_url')->nullable();
             $table->string('github_url')->nullable();
             $table->enum('gender', ['male', 'female'])->nullable();
-            $table->enum('account_type', ['mentors', 'mentee'])->default('mentee');
+            $table->enum('account_type', ['mentor', 'mentee'])->default('mentee');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
