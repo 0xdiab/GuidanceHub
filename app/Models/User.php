@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
         'is_admin',
         'position',
+        'summary',
         'session_price',
         'is_admin',
         'image',
