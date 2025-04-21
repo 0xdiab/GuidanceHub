@@ -92,6 +92,7 @@ p>a{
     padding: .7rem;
     background-color: transparent;
     border: unset;
+    color: var(--orange-color);
     border-bottom: 2px solid var(--main-color);
     transition: all .2s ease-in-out;
 }
