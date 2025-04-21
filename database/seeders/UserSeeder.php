@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
                 "cv_url"        => "",
                 "github_url"    => "",
                 "gender"        => "male",
-                "account_type"  => "mentor",
+                "account_type"  => "mentor"
             ],
             [
                 "name"          => "Test",
@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
                 "cv_url"        => "",
                 "github_url"    => "",
                 "gender"        => "male",
-                "account_type"  => "mentee",
+                "account_type"  => "mentee"
             ]
         ];
 
