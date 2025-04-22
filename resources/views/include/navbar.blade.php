@@ -55,6 +55,11 @@
                                 {{ Auth::user()->name }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="profile">
+                                @auth
+                                    @if ((Auth::user()->is_admin))
+                                        <li><a class="dropdown-item" href="{{ route('dashboard.home') }}">Admin Dashboard</a></li>
+                                    @endif
+                                @endauth
                                 <li><a class="dropdown-item" href="#">Profile</a></li>
                                 <li><a class="dropdown-item" href="{{route('profile.edit')}}">Settings</a></li>
                                 {{-- <li><a class="dropdown-item" href="#">Another action</a></li> --}}
