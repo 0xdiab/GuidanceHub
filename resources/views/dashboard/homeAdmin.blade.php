@@ -30,9 +30,9 @@
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    {{-- Numbers --}}
-                                    <div class="numbers">
-                                        <h5 class="font-weight-bolder text-end">34</h5>
+                                    {{-- count --}}
+                                    <div class="count">
+                                        <h5 class="font-weight-bolder text-end">{{$specializationsCount}}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -55,9 +55,9 @@
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    {{-- Numbers --}}
-                                    <div class="numbers">
-                                        <h5 class="font-weight-bolder text-end">34</h5>
+                                    {{-- count --}}
+                                    <div class="count">
+                                        <h5 class="font-weight-bolder text-end">{{ $skillsCount }}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -83,9 +83,9 @@
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    {{-- Numbers --}}
-                                    <div class="numbers">
-                                        <h5 class="font-weight-bolder text-end">34</h5>
+                                    {{-- count --}}
+                                    <div class="count">
+                                        <h5 class="font-weight-bolder text-end">{{$mentorsCount}}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -108,9 +108,9 @@
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    {{-- Numbers --}}
-                                    <div class="numbers">
-                                        <h5 class="font-weight-bolder text-end">34</h5>
+                                    {{-- count --}}
+                                    <div class="count">
+                                        <h5 class="font-weight-bolder text-end">{{ $menteesCount }}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -133,9 +133,9 @@
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    {{-- Numbers --}}
-                                    <div class="numbers">
-                                        <h5 class="font-weight-bolder text-end">34</h5>
+                                    {{-- count --}}
+                                    <div class="count">
+                                        <h5 class="font-weight-bolder text-end">{{$adminsCount}}</h5>
                                     </div>
                                 </div>
                             </div>
