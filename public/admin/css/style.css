@@ -1,0 +1,107 @@
+/* Global Rules */
+:root{
+    --main-color: #afdb83;
+    --light-color: #FFF5E4;
+    --dark-color: #143D60;
+    --orange-color: #ff8436;
+    --light-blue-color: #687fff;
+}
+
+.bg-color-light-blue {
+    background-color: var(--light-blue-color);
+}
+
+.bg-color-offwhite {
+    background-color: var(--light-color);
+}
+
+.bg-color-main {
+    background-color: var(--main-color);
+}
+
+.bg-color-dark {
+    background-color: var(--dark-color);
+}
+
+.bg-color-orange {
+    background-color: var(--orange-color);
+}
+
+body, .app {
+    height: 100vh;
+}
+
+h1>span,
+h2>span,
+h3>span,
+h4>span,
+h5>span,
+h6>span,
+p>span,
+p>a{
+    color: var(--orange-color);
+}
+
+.main-content {
+    width: calc(100% - 280px);
+}
+
+.main-content .content {
+    min-height: calc(100vh - 117px);
+}
+
+/* End of global rules */
+
+
+
+/* Navbar */
+.navbar {
+    background-color: var(--dark-color) !important;
+}
+
+.navbar .dropdown-menu.show {
+    right: 5px;
+    left: unset;
+}
+
+/* End of Navbar */
+
+
+
+/* Home section */
+.home-section .box .info a {
+    color: var(--dark-color);
+    font-weight: 500;
+}
+.home-section .box.box-mentors .info a,
+.home-section .box.box-admins .info a {
+    color: var(--light-color);
+}
+
+
+/* End of home section */
+
+
+/* Footer */
+.footer{
+    padding-top: 18px;
+    padding-bottom: 18px;
+    color: var(--light-color);
+    background-color: var(--dark-color);
+}
+
+.footer p {
+    font-size: 16.8px;
+}
+.footer a,
+.footer a:hover {
+    text-decoration: none;
+    color: var(--orange-color);
+}
+
+/* End of footer */
+
+
+/*  */
+
+
