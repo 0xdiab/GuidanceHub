@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Skill;
+use App\Models\Specialization;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminHomeController extends Controller
@@ -12,7 +15,13 @@ class AdminHomeController extends Controller
      */
     public function index()
     {
-        return view("dashboard.homeAdmin");
+        $skillsCount = Skill::count();
+        $specializationsCount = Specialization::count();
+        $adminsCount = User::where('is_admin', 1)->count();
+        $mentorsCount = User::where('account_type', 'mentor')->count();
+        $menteesCount = User::where('account_type', 'mentee')->count();
+        return view("dashboard.homeAdmin", 
+                compact('skillsCount', 'specializationsCount', 'adminsCount', 'mentorsCount', 'menteesCount'));
     }
 
     /**
