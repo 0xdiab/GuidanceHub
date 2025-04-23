@@ -14,7 +14,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => ['a
     Route::get('/', [AdminHomeController::class, 'index'])->name('home');
 
     // Skills Routes as resources 
-    Route::resource('skills', SkillController::class)->parameters(['skills' => 'id']);
+    Route::resource('skills', SkillController::class)->except(['show'])->parameters(['skills' => 'id']);
 
     // Specializations Routes as resources 
     Route::resource('specializations', SpecializationController::class)->parameters(['specializations' => 'id']);
