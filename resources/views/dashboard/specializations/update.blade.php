@@ -28,12 +28,12 @@
                         {{-- card-body --}}
                         <div class="card-body">
                             <div class="form-content">
-                                <form action="{{ route('dashboard.specializations.update', ['id' => $specializations->id]) }}" method="POST">
+                                <form action="{{ route('dashboard.specializations.update', ['id' => $specialization->id]) }}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group">
                                         <input type="text" class="form-control" name="name" id="name"
-                                            placeholder="Type the name of specializations" value="{{ $specializations->name }}">
+                                            placeholder="Type the name of specializations" value="{{ $specialization->name }}">
                                     </div>
                                     <div class="form-group mt-4">
                                         <button type="submit" class="btn btn-submit">Submit</button>
