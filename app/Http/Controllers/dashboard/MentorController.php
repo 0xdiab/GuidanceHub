@@ -13,8 +13,8 @@ class MentorController extends Controller
      */
     public function index()
     {
-        $admins = User::where('is_admin', 1)->get();
-        return view('dashboard.mentors.index', compact('admins'));
+        $mentors = User::where('is_admin', 0)->where('account_type', 'mentor')->get();
+        return view('dashboard.mentors.index', compact('mentors'));
     }
 
     /**
