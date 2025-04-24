@@ -14,7 +14,6 @@
 @section('styles')
     <link rel="stylesheet" href="{{ asset('libs/DataTables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('libs/DataTables/dataTables.dataTables.css') }}">
-    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css"> --}}
 @endsection
 
 
