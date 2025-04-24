@@ -50,7 +50,7 @@
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link ">
+            <a href="{{ route('dashboard.skills.index') }}" class="nav-link ">
                 <svg class="bi me-2" width="16" height="16">
                     <use xlink:href="#grid" />
                 </svg>
