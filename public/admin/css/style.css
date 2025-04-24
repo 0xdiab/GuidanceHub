@@ -110,7 +110,7 @@ p>a{
 }
 /* End of Breadcrumb */
 
-/* Skills Page */
+/* Pages */
 .section .card-data {
     box-shadow: 0 0 6px 1px hsl(0deg 0% 0% / 9%);
     border-color: snow;
@@ -126,13 +126,20 @@ p>a{
     margin-bottom: 0;
 }
 .section .card-data .card-body {
-    padding: 2rem 2rem 1rem;
+    padding: 2rem;
 }
 .section .card-data .card-body table{
     text-align: center;
 }
 
+.section .card-data form input {
+    padding: .7rem 1rem;
+}
 
+.section .card-data form input:focus {
+    box-shadow: none;
+    border-color: var(--dark-color);
+}
 
 /* Footer */
 .footer{
@@ -160,14 +167,14 @@ p>a{
     background-color: var(--dark-color) !important;
     color: var(--light-color) !important;
     line-height: 1 !important;
-    padding: .5rem 2rem !important;
+    padding: .7rem 2rem !important;
 }
 
 .btn-edit {
     background-color: var(--orange-color) !important;
     color: var(--dark-color) !important;
     line-height: 1 !important;
-    padding: .5rem 2rem !important;
+    padding: .7rem 2rem !important;
 }
 
 .btn-delete {
@@ -175,7 +182,7 @@ p>a{
     border-color: var(--red-color);
     color: var(--light-color) !important;
     line-height: 1 !important;
-    padding: .5rem 2rem !important;
+    padding: .7rem 2rem !important;
 }
 /* End of Buttons */
 
