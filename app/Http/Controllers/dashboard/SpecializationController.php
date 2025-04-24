@@ -60,10 +60,10 @@ class SpecializationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // Select on skill by id
-        $skill = Specialization::find($id);
+        // Select on specialization by id
+        $specialization = Specialization::find($id);
 
-        $skill->update([
+        $specialization->update([
             "name" => $request['name']
         ]);
 
@@ -75,6 +75,11 @@ class SpecializationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Select on specialization by id
+        $specialization = Specialization::find($id);
+        $specialization->delete();
+
+        return redirect()->back();
+
     }
 }
