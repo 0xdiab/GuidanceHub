@@ -1,5 +1,5 @@
 {{-- Sidebar --}}
-<div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; height: 100vh">
+<div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-white" style="width: 280px;">
     <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none logo"
         href="{{ route('dashboard.home') }}">
         <svg class="bi me-2" width="40" height="32">
