@@ -21,7 +21,7 @@ class SpecializationController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.specializations.create');
     }
 
     /**
@@ -29,7 +29,11 @@ class SpecializationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Specialization::create([
+            "name" => $request['name']
+        ]);
+
+        return redirect()->route('dashboard.specializations.index');
     }
 
     /**
