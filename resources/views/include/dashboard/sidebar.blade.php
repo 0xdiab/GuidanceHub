@@ -26,6 +26,22 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('dashboard.mentors.index') }}" class="nav-link">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#speedometer2" />
+                </svg>
+                Mentors
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('dashboard.mentees.index') }}" class="nav-link">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#speedometer2" />
+                </svg>
+                Mentees
+            </a>
+        </li>
+        <li>
             <a href="{{ route('dashboard.specializations.index') }}" class="nav-link">
                 <svg class="bi me-2" width="16" height="16">
                     <use xlink:href="#table" />
