@@ -13,7 +13,7 @@ class SpecializationController extends Controller
      */
     public function index()
     {
-        $skills = Specialization::all();
+        $specializations = Specialization::all();
         return view('dashboard.specializations.index', compact('specializations'));    }
 
     /**
