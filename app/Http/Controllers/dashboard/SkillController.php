@@ -30,16 +30,21 @@ class SkillController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        // Validate on data coming from request
+        // $data = $request->validated();
 
-    }
+        try
+        {
+            Skill::create([
+                "name" => $request['name']
+            ]);
+  
+            return redirect()->route('dashboard.skills.index');
+        }catch(\Exception $e)
+        {
+            return redirect()->back()->with('error', $e);
+        }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
     }
 
     /**
@@ -47,7 +52,9 @@ class SkillController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Select on skill by id
+        $skill = Skill::find($id);
+        return view('dashboard.skills.update', compact('skill'));
     }
 
     /**
@@ -55,7 +62,14 @@ class SkillController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Select on skill by id
+        $skill = Skill::find($id);
+
+        $skill->update([
+            "name" => $request['name']
+        ]);
+
+        return redirect()->route('dashboard.skills.index');
     }
 
     /**
@@ -63,6 +77,9 @@ class SkillController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Select on skill by id
+        $skill = Skill::find($id);
+        $skill->delete();
+        return redirect()->back();
     }
 }
