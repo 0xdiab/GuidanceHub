@@ -14,7 +14,8 @@ class SpecializationController extends Controller
     public function index()
     {
         $specializations = Specialization::all();
-        return view('dashboard.specializations.index', compact('specializations'));    }
+        return view('dashboard.specializations.index', compact('specializations'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -49,7 +50,9 @@ class SpecializationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Select on specialia$specialization by id
+        $specialization = Specialization::find($id);
+        return view('dashboard.specializations.update', compact('specialization'));
     }
 
     /**
@@ -57,7 +60,14 @@ class SpecializationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Select on skill by id
+        $skill = Specialization::find($id);
+
+        $skill->update([
+            "name" => $request['name']
+        ]);
+
+        return redirect()->route('dashboard.specializations.index');
     }
 
     /**
