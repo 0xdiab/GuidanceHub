@@ -20,13 +20,13 @@
             <div class="row justify-content-center">
                 <div class="col-7">
                     {{-- card-form --}}
-                    <div class="card card-form">
+                    <div class="card card-form card-data">
                         {{-- Card-header --}}
                         <div class="card-header">
                             <h4 class="heading m-0 p-2">Create a new skill</h4>
                         </div>
                         {{-- card-body --}}
-                        <div class="card-body p-4">
+                        <div class="card-body">
                             <div class="form-content">
                                 <form action="{{ route('dashboard.skills.store') }}" method="POST">
                                     @csrf
