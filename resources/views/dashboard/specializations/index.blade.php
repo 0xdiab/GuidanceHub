@@ -20,8 +20,8 @@
 
 {{-- Main Content --}}
 @section('main-content')
-    {{-- Skill section --}}
-    <section class="section skill-section py-4">
+    {{-- specializations section --}}
+    <section class="section specializations-section py-4">
         {{-- Container --}}
         <div class="container">
             <div class="row justify-content-center">
