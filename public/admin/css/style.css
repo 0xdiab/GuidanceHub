@@ -5,6 +5,7 @@
     --dark-color: #143D60;
     --orange-color: #ff8436;
     --light-blue-color: #687fff;
+    --red-color: #8e000e;
 }
 
 .bg-color-light-blue {
@@ -52,8 +53,6 @@ p>a{
 
 /* End of global rules */
 
-
-
 /* Navbar */
 .navbar {
     background-color: var(--dark-color) !important;
@@ -65,24 +64,6 @@ p>a{
 }
 
 /* End of Navbar */
-
-
-
-/* Home section */
-.home-section .box .info a {
-    color: var(--dark-color);
-    font-weight: 500;
-}
-.home-section .box.box-mentors .info a,
-.home-section .box.box-mentors .count h5,
-.home-section .box.box-admins .info a,
-.home-section .box.box-admins .count h5 {
-    color: var(--light-color);
-}
-
-
-/* End of home section */
-
 /* Sidebar */
 .sidebar {
     background-color: var(--dark-color) !important;
@@ -106,6 +87,53 @@ p>a{
 
 /* End of sidebar */
 
+/* Home section */
+.home-section .box .info a {
+    color: var(--dark-color);
+    font-weight: 500;
+}
+.home-section .box.box-mentors .info a,
+.home-section .box.box-mentors .count h5,
+.home-section .box.box-admins .info a,
+.home-section .box.box-admins .count h5 {
+    color: var(--light-color);
+}
+
+
+/* End of home section */
+
+/* Breadcrumb */
+.breadcrumb li a {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 500;
+}
+/* End of Breadcrumb */
+
+/* Skills Page */
+.section .card-data {
+    box-shadow: 0 0 6px 1px hsl(0deg 0% 0% / 9%);
+    border-color: snow;
+}
+.section .card-data .card-header{
+    padding: 2rem 2rem 1rem;
+    background-color: var(--light-color);
+    
+}
+.section .card-data .card-header h1{
+    font-size: 1.8rem;
+    color: var(--dark-color);
+    margin-bottom: 0;
+}
+.section .card-data .card-body {
+    padding: 2rem 2rem 1rem;
+}
+.section .card-data .card-body table{
+    text-align: center;
+}
+
+
+
 /* Footer */
 .footer{
     padding-top: 18px;
@@ -126,6 +154,29 @@ p>a{
 /* End of footer */
 
 
-/*  */
+/* Buttons */
+.btn-create,
+.btn-submit {
+    background-color: var(--dark-color) !important;
+    color: var(--light-color) !important;
+    line-height: 1 !important;
+    padding: .5rem 2rem !important;
+}
+
+.btn-edit {
+    background-color: var(--orange-color) !important;
+    color: var(--dark-color) !important;
+    line-height: 1 !important;
+    padding: .5rem 2rem !important;
+}
+
+.btn-delete {
+    background-color: var(--red-color) !important;
+    border-color: var(--red-color);
+    color: var(--light-color) !important;
+    line-height: 1 !important;
+    padding: .5rem 2rem !important;
+}
+/* End of Buttons */
 
 
