@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view("dashboard.users.create");
     }
 
     /**
@@ -30,7 +31,23 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        User::create([
+            "name" => $request['name'],
+            "email" => $request['email'], 
+            "password" => Hash::make($request['password']),
+            "position" => $request['position'],
+            "is_admin" => 1,
+            "session_price" => $request['session_price'],
+            "linkedin_url" => $request['linkedin_url'],
+            "x_url" => $request['twitter_url'],
+            "github_url" => $request['github_url'],
+            "cv_url" => $request['cv_url'],
+            "gender" => $request['gender'],
+            "account_type" => "mentor",
+        ]);
+
+        return redirect()->route('dashboard.admins.index');
     }
 
     /**
@@ -46,7 +63,8 @@ class AdminController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::find($id);
+        return view('dashboard.users.update', compact('user'));
     }
 
     /**
@@ -54,7 +72,22 @@ class AdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::find($id);
+        $user->update([
+            "name" => $request['name'],
+            "email" => $request['email'], 
+            "password" => Hash::make($request['password']),
+            "position" => $request['position'],
+            "is_admin" => 1,
+            "session_price" => $request['session_price'],
+            "linkedin_url" => $request['linkedin_url'],
+            "x_url" => $request['twitter_url'],
+            "github_url" => $request['github_url'],
+            "cv_url" => $request['cv_url'],
+            "gender" => $request['gender'],
+            "account_type" => "mentor",
+        ]);
+        return redirect()->route('dashboard.admins.index');
     }
 
     /**
