@@ -1,4 +1,3 @@
-{{ $mentor }}
 @extends('layouts.dashboard.app')
 
 {{-- Page name --}}
