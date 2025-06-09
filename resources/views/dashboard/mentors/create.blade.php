@@ -127,8 +127,8 @@
                                             <div class="check-type mt-4">
                                                 <label for="accout-type">Account Type</label>
                                                 <select class="form-select" id="accout-type" name="account_type">
-                                                    <option value="1">Mentor</option>
-                                                    <option value="2" selected>Mentee (Defualt)</option>
+                                                    <option value="1" selected>Mentor</option>
+                                                    <option value="2">Mentee (Defualt)</option>
                                                 </select>
                                             </div>
                                         </div>
