@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class MentorController extends Controller
@@ -13,7 +14,7 @@ class MentorController extends Controller
      */
     public function index()
     {
-        $mentors = User::where('is_admin', 0)->where('account_type', 'mentor')->get();
+        $mentors = User::where('account_type', 'mentor')->get();
         return view('dashboard.mentors.index', compact('mentors'));
     }
 
@@ -22,7 +23,7 @@ class MentorController extends Controller
      */
     public function create()
     {
-        //
+        return view("dashboard.mentors.create");
     }
 
     /**
@@ -30,7 +31,22 @@ class MentorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        User::create([
+            "name"              => $request['name'],
+            "email"             => $request['email'],
+            "password"          => Hash::make($request['password']),
+            "position"          => $request['position'],
+            "session_price"     => $request['session_price'],
+            "linkedin_url"      => $request['linkedin_url'],
+            "x_url"             => $request['twitter_url'],
+            "github_url"        => $request['github_url'],
+            "cv_url"            => $request['cv_url'],
+            "gender"            => $request['gender'],
+            "account_type"      => ($request['account_type'] == 1) ? "mentor" : "mentee",
+        ]);
+
+        return redirect()->route('dashboard.mentors.index');
     }
 
     /**
@@ -46,7 +62,8 @@ class MentorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $mentor = User::where('account_type', 'mentor')->find($id);
+        return view("dashboard.mentors.update", compact('mentor'));
     }
 
     /**
@@ -54,7 +71,23 @@ class MentorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd($request);
+        $mentor = User::where('account_type', 'mentor')->find($id);
+        $mentor->update([
+            "name"              => $request['name'],
+            "email"             => $request['email'],
+            "password"          => Hash::make($request['password']),
+            "position"          => $request['position'],
+            "session_price"     => $request['session_price'],
+            "linkedin_url"      => $request['linkedin_url'],
+            "x_url"             => $request['twitter_url'],
+            "github_url"        => $request['github_url'],
+            "cv_url"            => $request['cv_url'],
+            "gender"            => $request['gender'],
+            "account_type"      => ($request['account_type'] == 1) ? "mentor" : "mentee",
+        ]);
+
+        return view("dashboard.mentors.update", compact('mentor'));
     }
 
     /**
