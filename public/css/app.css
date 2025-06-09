@@ -189,8 +189,65 @@ p>a{
 .register-section .avatar-upload .avatar-edit input[type="file"] {
     color: var(--main-color);
 }
-
 /* End of sign-section */
+
+/* End-user */
+.profile-section {
+    
+}
+.profile-section .profile-header {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.profile-section .profile-header .profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid var(--orange-color);
+}
+
+.profile-section .profile-header .profile-image img{
+    border-radius: 50%;
+
+}
+
+.profile-section .profile-header .profile-info{}
+
+.profile-section .profile-header .profile-info h2{}
+
+.profile-section .profile-header .profile-info span{}
+
+.profile-section .profile-header .profile-info .languages{}
+
+.profile-section .profile-header .profile-info p{}
+
+.profile-section .profile-header .profile-info .social-media {}
+
+.profile-section .profile-header .profile-info li {}
+
+.profile-section .profile-header .profile-info li a {}
+
+.profile-section .summary {}
+
+.profile-section .summary p{}
+
+.profile-section .skills {
+    list-style: none;
+}
+
+.profile-section .skills li{
+    display: inline-block;
+}
+
+/* end of end-user ui */
+
+
+
+
+
+
+
 
 /* Footer */
 .footer{
