@@ -15,7 +15,7 @@
                     <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Specializations</a>
+                    <a class="nav-link" href="{{ route('user.specialization.index') }}">Specializations</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>
@@ -60,7 +60,7 @@
                                         <li><a class="dropdown-item" href="{{ route('dashboard.home') }}">Admin Dashboard</a></li>
                                     @endif
                                 @endauth
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="{{route('profile.index')}}">Profile</a></li>
                                 <li><a class="dropdown-item" href="{{route('profile.edit')}}">Settings</a></li>
                                 {{-- <li><a class="dropdown-item" href="#">Another action</a></li> --}}
                                 <li>
