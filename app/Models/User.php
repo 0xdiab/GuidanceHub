@@ -57,4 +57,42 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function mentorSessions()
+    {
+        return $this->hasMany(MentorSession::class, 'mentor_id');
+    }
+
+    public function menteeSessions()
+    {
+        return $this->hasMany(MentorSession::class, 'mentee_id');
+    }
+
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class, 'skill_user', 'mentor_id', 'skill_id')->withTimestamps();
+    }
+
+    public function specializations()
+    {
+        return $this->belongsToMany(Specialization::class, 'specialization_user', 'mentor_id', 'specialization_id')->withTimestamps();
+    }
+
+    public function languages()
+    {
+        return $this->belongsToMany(Language::class, 'user_language')
+                    ->withPivot('proficiency')
+                    ->withTimestamps();
+    }
+
+    // User have many reviews
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'mentee_id');
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class, 'mentee_id');
+    }
 }
