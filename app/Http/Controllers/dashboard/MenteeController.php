@@ -69,7 +69,8 @@ class MenteeController extends Controller
     public function edit(string $id)
     {
         $mentee = User::where('account_type', 'mentee')->find($id);
-        return view("dashboard.mentees.update", compact('mentee'));
+        $specializations = Specialization::all();
+        return view("dashboard.mentees.update", compact('mentee', 'specializations'));
     }
 
     /**

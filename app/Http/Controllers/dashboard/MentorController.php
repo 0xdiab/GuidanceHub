@@ -69,7 +69,8 @@ class MentorController extends Controller
     public function edit(string $id)
     {
         $mentor = User::where('account_type', 'mentor')->find($id);
-        return view("dashboard.mentors.update", compact('mentor'));
+        $specializations = Specialization::all();
+        return view("dashboard.mentors.update", compact('mentor', 'specializations'));
     }
 
     /**

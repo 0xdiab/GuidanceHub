@@ -70,7 +70,8 @@ class AdminController extends Controller
     public function edit(string $id)
     {
         $user = User::find($id);
-        return view('dashboard.users.update', compact('user'));
+        $specializations = Specialization::all();
+        return view('dashboard.users.update', compact('user', 'specializations'));
     }
 
     /**
