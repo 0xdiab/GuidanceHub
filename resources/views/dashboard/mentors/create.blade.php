@@ -31,12 +31,11 @@
                                 <form action="{{ route('dashboard.mentors.store') }}" method="POST">
                                     @csrf
                                     <!-- Name -->
-                                    <div class="mt-4">
+                                    <div class="form-group mt-4">
                                         <label for="name">Name</label>
                                         <input id="name" class="form-control" type="text" name="name"
                                             value="{{ old('name') }}" required autofocus autocomplete="name"
                                             placeholder="Type your name" />
-                                        <error :messages="$errors - > get('name')" class="mt-2" />
                                     </div>
 
                                     <!-- Email Address -->
@@ -86,7 +85,7 @@
                                     <div class="row mt-4">
                                         <div class="col">
                                             <label for="linkedin">Linkedin URL</label>
-                                            <input type="text" class="form-control" id="linkedin"  name="linkedin_url"
+                                            <input type="text" class="form-control" id="linkedin" name="linkedin_url"
                                                 placeholder="linkedin.com/in/idiab1">
                                         </div>
                                         <div class="col">
@@ -113,7 +112,7 @@
                                     <div class="row mt-4">
                                         {{-- Check on Gender --}}
                                         <div class="col">
-                                            <div class="check-type mt-4">
+                                            <div class="form-group mt-4">
                                                 <label for="gender">Gender</label>
                                                 <select class="form-select" id="gender" name="gender">
                                                     <option value="1" selected>Male (Defualt)</option>
@@ -124,7 +123,7 @@
 
                                         {{-- Check on mentors or mentee --}}
                                         <div class="col">
-                                            <div class="check-type mt-4">
+                                            <div class="form-group mt-4">
                                                 <label for="accout-type">Account Type</label>
                                                 <select class="form-select" id="accout-type" name="account_type">
                                                     <option value="1" selected>Mentor</option>
@@ -132,6 +131,17 @@
                                                 </select>
                                             </div>
                                         </div>
+                                    </div>
+                                    {{-- Specializations --}}
+                                    <div class="check-type form-group mt-4">
+                                        <label for="specialization">Specialization</label>
+                                        <select class="form-select" id="specialization" name="specializations[]" multiple
+                                            required>
+                                            @foreach ($specializations as $specialization)
+                                                <option value="{{ $specialization->id }}">
+                                                    {{ $specialization->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="form-group mt-4">
                                         <button type="submit" class="btn btn-submit">Submit</button>

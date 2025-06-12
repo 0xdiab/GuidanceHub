@@ -31,16 +31,15 @@
                                 <form action="{{ route('dashboard.admins.store') }}" method="POST">
                                     @csrf
                                     <!-- Name -->
-                                    <div class="mt-4">
+                                    <div class="form-group mt-4">
                                         <label for="name">Name</label>
                                         <input id="name" class="form-control" type="text" name="name"
                                             value="{{ old('name') }}" required autofocus autocomplete="name"
                                             placeholder="Type your name" />
-                                        <error :messages="$errors - > get('name')" class="mt-2" />
                                     </div>
 
                                     <!-- Email Address -->
-                                    <div class="mt-4">
+                                    <div class="form-group mt-4">
                                         <label class="d-block" for="email">Email</label>
                                         <input id="email" class="form-control" type="email" name="email"
                                             value="{{ old('email') }}" required autofocus autocomplete="username"
@@ -49,7 +48,7 @@
                                     </div>
 
                                     <!-- Password -->
-                                    <div class="mt-4">
+                                    <div class="form-group mt-4">
                                         <label class="d-block" for="password">Password</label>
                                         <input id="password" class="form-control" type="password" name="password" required
                                             autocomplete="current-password" placeholder="Type your password" />
@@ -58,7 +57,7 @@
                                     </div>
 
                                     <!-- Confirm Password -->
-                                    <div class="mt-4">
+                                    <div class="form-group mt-4">
                                         <label for="password_confirmation">Confirm Password</label>
 
                                         <input id="password_confirmation" class="form-control" type="password"
@@ -71,14 +70,18 @@
                                     {{-- Current Position --}}
                                     <div class="row mt-4">
                                         <div class="col">
-                                            <label for="position">Current Position</label>
-                                            <input id="position" class="form-control" type="text" name="position"
-                                                placeholder="Type your current position" />
+                                            <div class="form-group">
+                                                <label for="position">Current Position</label>
+                                                <input id="position" class="form-control" type="text" name="position"
+                                                    placeholder="Type your current position" />
+                                            </div>
                                         </div>
                                         <div class="col">
-                                            <label for="session_price">Session Price</label>
-                                            <input id="session_price" class="form-control" type="number"
-                                                name="session_price" placeholder="Type your Session Price" />
+                                            <div class="form-group">
+                                                <label for="session_price">Session Price</label>
+                                                <input id="session_price" class="form-control" type="number"
+                                                    name="session_price" placeholder="Type your Session Price" />
+                                            </div>
                                         </div>
                                     </div>
 
@@ -86,7 +89,7 @@
                                     <div class="row mt-4">
                                         <div class="col">
                                             <label for="linkedin">Linkedin URL</label>
-                                            <input type="text" class="form-control" id="linkedin"  name="linkedin_url"
+                                            <input type="text" class="form-control" id="linkedin" name="linkedin_url"
                                                 placeholder="linkedin.com/in/idiab1">
                                         </div>
                                         <div class="col">
@@ -132,6 +135,17 @@
                                                 </select>
                                             </div>
                                         </div>
+                                    </div>
+
+                                    {{-- Specializations --}}
+                                    <div class="check-type form-group mt-4">
+                                        <label for="specialization">Specialization</label>
+                                        <select class="form-select" id="specialization" name="specializations[]" multiple required>
+                                            @foreach ($specializations as $specialization)
+                                                <option value="{{ $specialization->id }}">
+                                                    {{ $specialization->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="form-group mt-4">
                                         <button type="submit" class="btn btn-submit">Submit</button>
