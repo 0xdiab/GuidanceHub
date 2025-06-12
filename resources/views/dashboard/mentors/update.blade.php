@@ -134,6 +134,17 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    {{-- Specializations --}}
+                                    <div class="check-type form-group mt-4">
+                                        <label for="specialization">Specialization</label>
+                                        <select class="form-select" id="specialization" name="specializations[]" multiple required>
+                                            @foreach ($specializations as $specialization)
+                                                <option value="{{ $specialization->id }}">
+                                                    {{ $specialization->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                     <div class="form-group mt-4">
                                         <button type="submit" class="btn btn-submit">Submit</button>
                                     </div>
