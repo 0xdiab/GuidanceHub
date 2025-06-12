@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\AdminHomeController;
+use App\Http\Controllers\SpecializationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -8,10 +9,15 @@ Route::get('/', function () {
     return view('Pages.home');
 });
 
+// Specializations
+Route::get('/specializations', [SpecializationController::class, 'index'])->name('user.specialization.index');
+Route::get('/specializations/{id}', [SpecializationController::class, 'show'])->name('user.specialization.show');
+
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profileSettings', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profileSettings', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profileSettings', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__ . '/auth.php';
