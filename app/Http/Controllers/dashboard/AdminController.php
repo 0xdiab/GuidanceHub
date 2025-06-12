@@ -34,20 +34,24 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        User::create([
-            "name" => $request['name'],
-            "email" => $request['email'], 
-            "password" => Hash::make($request['password']),
-            "position" => $request['position'],
-            "is_admin" => 1,
-            "session_price" => $request['session_price'],
-            "linkedin_url" => $request['linkedin_url'],
-            "x_url" => $request['twitter_url'],
-            "github_url" => $request['github_url'],
-            "cv_url" => $request['cv_url'],
-            "gender" => $request['gender'],
-            "account_type" => "mentor",
+        $admin = User::create([
+            "name"              => $request['name'],
+            "email"             => $request['email'],
+            "password"          => Hash::make($request['password']),
+            "position"          => $request['position'],
+            "is_admin"          => 1,
+            "session_price"     => $request['session_price'],
+            "linkedin_url"      => $request['linkedin_url'],
+            "x_url"             => $request['twitter_url'],
+            "github_url"        => $request['github_url'],
+            "cv_url"            => $request['cv_url'],
+            "gender"            => $request['gender'],
+            "account_type"      => "mentor",
         ]);
+
+        if ($request->has('specializations')) {
+            $admin->specializations()->sync($request->specializations);
+        }
 
         return redirect()->route('dashboard.admins.index');
     }
@@ -77,7 +81,7 @@ class AdminController extends Controller
         $user = User::find($id);
         $user->update([
             "name" => $request['name'],
-            "email" => $request['email'], 
+            "email" => $request['email'],
             "password" => Hash::make($request['password']),
             "position" => $request['position'],
             "is_admin" => 1,

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Specialization;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -23,7 +24,8 @@ class MenteeController extends Controller
      */
     public function create()
     {
-        return view("dashboard.mentees.create");
+        $specializations = Specialization::all();
+        return view("dashboard.mentees.create", compact('specializations'));
     }
 
     /**
@@ -32,7 +34,7 @@ class MenteeController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        User::create([
+        $mentee = User::create([
             "name"              => $request['name'],
             "email"             => $request['email'],
             "password"          => Hash::make($request['password']),
@@ -45,6 +47,10 @@ class MenteeController extends Controller
             "gender"            => $request['gender'],
             "account_type"      => ($request['account_type'] == 1) ? "mentor" : "mentee",
         ]);
+
+        if ($request->has('specializations')) {
+            $mentee->specializations()->sync($request->specializations);
+        }
 
         return redirect()->route('dashboard.mentees.store');
     }

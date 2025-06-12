@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Specialization;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -23,7 +24,8 @@ class MentorController extends Controller
      */
     public function create()
     {
-        return view("dashboard.mentors.create");
+        $specializations = Specialization::all();
+        return view("dashboard.mentors.create", compact('specializations'));
     }
 
     /**
@@ -32,7 +34,7 @@ class MentorController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        User::create([
+        $mentor = User::create([
             "name"              => $request['name'],
             "email"             => $request['email'],
             "password"          => Hash::make($request['password']),
@@ -45,6 +47,10 @@ class MentorController extends Controller
             "gender"            => $request['gender'],
             "account_type"      => ($request['account_type'] == 1) ? "mentor" : "mentee",
         ]);
+
+        if ($request->has('specializations')) {
+            $mentor->specializations()->sync($request->specializations);
+        }
 
         return redirect()->route('dashboard.mentors.index');
     }
