@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Specialization;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,7 +24,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view("dashboard.users.create");
+        $specializations = Specialization::all();
+        return view("dashboard.users.create", compact('specializations'));
     }
 
     /**
