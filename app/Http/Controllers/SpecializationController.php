@@ -38,8 +38,9 @@ class SpecializationController extends Controller
      */
     public function show(string $id)
     {
-        $specialization = Specialization::find($id);
-        return view("Pages.specialization_details", compact('specialization'));
+        $specialization = Specialization::with('mentors')->find($id);
+        $mentors = $specialization->mentors()->where('account_type', 'mentor')->get();
+        return view("Pages.specialization_details", compact('specialization', 'mentors'));
     }
 
     /**
