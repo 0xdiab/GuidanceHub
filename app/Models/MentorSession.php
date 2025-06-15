@@ -6,7 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class MentorSession extends Model
 {
-    //
+    protected $fillable = [
+        'mentee_id',
+        'session_id',
+        'provider',
+        'payment_reference',
+        'amount',
+        'status',
+    ];
 
     public function mentor()
     {
