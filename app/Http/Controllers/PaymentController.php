@@ -90,26 +90,43 @@ class PaymentController extends Controller
                 'quantity' => 1,
             ]],
             'mode' => 'payment',
-            'success_url' => route('payment.success', ['session_id' => $session->id]),
+            'success_url' => route('payment.success', ['session_id' => $session->id, 'checkout_id' => '{CHECKOUT_SESSION_ID}']),
             'cancel_url' => route('payment.cancel'),
         ]);
 
         return redirect($checkout->url);
     }
 
-    public function paymentSuccess($session_id)
+    public function paymentSuccess(Request $request, $session_id)
     {
+        Stripe::setApiKey(config('services.stripe.secret'));
         $session = MentorSession::findOrFail($session_id);
+        $checkout_id = $request->get('checkout_id');
 
-        if(!$session->is_paid) {
+        if (!$session->is_paid) {
             $session->update([
                 'is_paid'   => true,
                 'status'    => 'confirmed',
             ]);
         }
 
+        $stripeSession = StripeSession::retrieve($checkout_id);
+
         Payment::create([
-            'mentee_id' => Auth::id()
+            'mentee_id' => Auth::id(),
+            'session_id' => $session->id,
+            'provider' => 'stripe',
+            'payment_reference' => $stripeSession->payment_intent,
+            // 'payment_reference' => 'N/A',
+            'amount' => $session->mentor->session_price,
+            'status' => 'paid',
         ]);
+
+        return redirect()->route('sessions.show', $session_id);
+    }
+
+    public function paymentCancel()
+    {
+        return redirect()->route('home');
     }
 }
