@@ -225,6 +225,14 @@ p>a{
     border-bottom: 1px solid #dee2e6;
 }
 
+.profile-nav-tabs li button {
+    background-color: transparent;
+}
+
+.profile-nav-tabs li button.active {
+    border-bottom: 1px solid #198754!important;
+}
+
 .profile-image-container {
     position: relative;
 }
