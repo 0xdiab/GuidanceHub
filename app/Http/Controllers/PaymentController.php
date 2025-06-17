@@ -90,7 +90,7 @@ class PaymentController extends Controller
                 'quantity' => 1,
             ]],
             'mode' => 'payment',
-            'success_url' => route('payment.success', ['session_id' => $session->id, 'checkout_id' => '{CHECKOUT_SESSION_ID}']),
+            'success_url' => route('payment.success', ['session_id' => $session->id]) . '?checkout_id={CHECKOUT_SESSION_ID}',
             'cancel_url' => route('payment.cancel'),
         ]);
 
@@ -99,6 +99,7 @@ class PaymentController extends Controller
 
     public function paymentSuccess(Request $request, $session_id)
     {
+        // dd($request->checkout_id);
         Stripe::setApiKey(config('services.stripe.secret'));
         $session = MentorSession::findOrFail($session_id);
         $checkout_id = $request->get('checkout_id');

@@ -6,15 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
-    protected $faillable =[
-        'mentor_id',
+    protected $fillable  = [
         'mentee_id',
-        'session_time',
-        'session_link',
+        'session_id',
+        'provider',
+        'payment_reference',
+        'amount',
         'status',
-        'is_paid',
-        'payment_id',
-        'meeting_provider',
-        'meeting_id'
     ];
 }

@@ -46,7 +46,14 @@
 
                                 {{-- card-footer --}}
                                 <div class="card-footer">
-                                    <a href="" class="btn">Book Now <i class="fa-solid fa-plus"></i></a>
+                                    <form action="{{ route('sessions.book', $mentor->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-primary">
+                                            Book Now <i class="fa-solid fa-plus"></i>
+                                        </button>
+                                    </form>
+                                    {{-- <a href="{{ route('payment.checkout', $session->id) }}" class="btn">Book Now <i
+                                            class="fa-solid fa-plus"></i></a> --}}
                                 </div>
                                 {{-- ./card-footer --}}
                             </div>

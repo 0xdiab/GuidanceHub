@@ -27,9 +27,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/payment/checkout/{session_id}', [PaymentController::class, 'createCheckout'])->name('payment.checkout');
     Route::get('/payment/success/{session_id}', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
     Route::get('/payment/cancel', [PaymentController::class, 'paymentCancel'])->name('payment.cancel');
-
-    Route::get('/sessions/{id}', [MentorSessionController::class, 'show'])->name('sessions.show');
     Route::post('/webhooks/stripe', [WebhookController::class, 'handle']);
+
+    // Sessions
+    Route::post('/sessions/book/{mentor_id}', [MentorSessionController::class, 'bookSession'])->name('sessions.book');
+    Route::get('/sessions/{id}', [MentorSessionController::class, 'show'])->name('sessions.show');
 });
 
 require __DIR__ . '/auth.php';
