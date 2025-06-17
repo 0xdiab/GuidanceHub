@@ -212,6 +212,35 @@ p>a{
 
 }
 
+.profile-profile-border-bottom-3 {
+    border-bottom: 3px solid !important;
+}
+
+.profile-profile-nav-tabs .nav-link.active {
+    background-color: transparent!important;
+    border-color: transparent;
+}
+
+.profile-nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.profile-image-container {
+    position: relative;
+}
+
+.profile-image-container::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #ff6b6b, #feca57);
+    border-radius: 50%;
+    z-index: 1;
+}
+
 .profile-section .profile-header .profile-info{}
 
 .profile-section .profile-header .profile-info h2{}

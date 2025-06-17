@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -13,7 +14,9 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        return view('profile.index');
+        $user = Auth::user();
+        $userSkills = $user->skills;
+        return view('profile.index', compact('user', 'userSkills'));
     }
     /**
      * Display the user's profile form.
@@ -38,7 +41,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profile.index')->with('status', 'profile-updated');
     }
 
     /**
