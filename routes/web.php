@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Dashboard\AdminHomeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MentorSessionController;
@@ -9,11 +10,16 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebhookController;
 use Illuminate\Support\Facades\Route;
 
+// Home
 Route::get('/', [HomeController::class, 'index'])->name('user.home');
 
 // Specializations
 Route::get('/specializations', [SpecializationController::class, 'index'])->name('user.specialization.index');
 Route::get('/specializations/{id}', [SpecializationController::class, 'show'])->name('user.specialization.show');
+
+// About
+Route::get('/about', [AboutController::class, 'index'])->name('user.about');
+
 // Route::get('/mentors/{id}', [MentorController::class, 'show'])->name('mentors.show');
 
 Route::middleware('auth')->group(function () {
