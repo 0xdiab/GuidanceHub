@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\AdminHomeController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MentorSessionController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SpecializationController;
@@ -8,9 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebhookController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('Pages.home');
-})->name('user.home');
+Route::get('/', [HomeController::class, 'index'])->name('user.home');
 
 // Specializations
 Route::get('/specializations', [SpecializationController::class, 'index'])->name('user.specialization.index');
