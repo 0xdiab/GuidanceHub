@@ -6,8 +6,7 @@
 @endsection
 
 @section('styles')
-    <link rel="stylesheet" href="{{ asset("libs/Select2/css/select2.min.css") }}"/>
-
+    <link rel="stylesheet" href="{{ asset('libs/Select2/css/select2.min.css') }}" />
 @endsection
 {{-- Content --}}
 @section('content')
@@ -41,12 +40,17 @@
                                     <h1>Grow Smarter, Not Alone.</h1>
                                     <p>Connect with experts who can help you reach the next level.</p>
 
-                                    <select id="mySelect" style="width: 200px">
-  <option value="1">Mentor</option>
-  <option value="2">Mentee</option>
-  <option value="3">Coach</option>
-  <option value="4">Advisor</option>
-</select>
+                                    <select id="mySelect">
+                                        <option>Choose your specialization</option>
+                                        @if ($specializations->count() > 0)
+                                            @foreach ($specializations as $specialization)
+                                                <option value="{{ $specialization->id }}">
+                                                    <a class=""
+                                                        href="{{ route('user.specialization.show', ['id' => $specialization->id]) }}">{{ $specialization->name }}</a>
+                                                </option>
+                                            @endforeach
+                                        @endif
+                                    </select>
                                 </div>
                                 <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
                                     aria-labelledby="profile-tab" tabindex="0">
@@ -68,13 +72,13 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset("libs/Select2/js/jquery-3.6.0.min.js") }}"></script>
-<script src="{{ asset("libs/Select2/js/select2.min.js") }}"></script>
+    <script src="{{ asset('libs/Select2/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('libs/Select2/js/select2.min.js') }}"></script>
 
 
-<script>
-  $(document).ready(function() {
-    $('#mySelect').select2();
-  });
-</script>
+    <script>
+        $(document).ready(function() {
+            $('#mySelect').select2();
+        });
+    </script>
 @endsection
