@@ -12,6 +12,10 @@ Route::get('/', function () {
     return view('Pages.home');
 })->name('user.home');
 
+Route::get('/about', function () {
+    return view('Pages.Aboutus');
+})->name('user.about');
+
 // Specializations
 Route::get('/specializations', [SpecializationController::class, 'index'])->name('user.specialization.index');
 Route::get('/specializations/{id}', [SpecializationController::class, 'show'])->name('user.specialization.show');
