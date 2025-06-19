@@ -128,8 +128,8 @@
                                             <div class="check-type mt-4">
                                                 <label for="accout-type">Account Type</label>
                                                 <select class="form-select" id="accout-type" name="account_type">
-                                                    <option value="1"  {{ ($mentor->account_type == "mentor") ? "selected" : "" ; }}>Mentor</option>
-                                                    <option value="2"  {{ ($mentor->account_type == "mentee") ? "selected" : "" ; }}>Mentee (Defualt)</option>
+                                                    <option value="1" {{ ($mentor->account_type == "mentor") ? "selected" : "" ; }}>Mentor</option>
+                                                    <option value="2" {{ ($mentor->account_type == "mentee") ? "selected" : "" ; }}>Mentee (Defualt)</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -139,8 +139,12 @@
                                     <div class="check-type form-group mt-4">
                                         <label for="specialization">Specialization</label>
                                         <select class="form-select" id="specialization" name="specializations[]" multiple required>
+                                            @php
+                                                $id = 1;
+                                            @endphp
                                             @foreach ($specializations as $specialization)
-                                                <option value="{{ $specialization->id }}">
+                                                <option value="{{ $id++ }}" 
+                                                    {{ ($mentor->specializations->contains("id", $specialization->id) == $specialization->id) ? "selected" : "" ; }}>
                                                     {{ $specialization->name }}</option>
                                             @endforeach
                                         </select>

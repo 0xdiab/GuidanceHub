@@ -28,7 +28,8 @@
                         {{-- card-body --}}
                         <div class="card-body">
                             <div class="form-content">
-                                <form action="{{ route('dashboard.mentees.update', ['id' => $mentee->id ]) }}" method="POST">
+                                <form action="{{ route('dashboard.mentees.update', ['id' => $mentee->id]) }}"
+                                    method="POST">
                                     @csrf
                                     @method('PUT')
                                     <!-- Name -->
@@ -74,12 +75,13 @@
                                         <div class="col">
                                             <label for="position">Current Position</label>
                                             <input id="position" class="form-control" type="text" name="position"
-                                                placeholder="Type your current position" value="{{ $mentee->position }}"/>
+                                                placeholder="Type your current position" value="{{ $mentee->position }}" />
                                         </div>
                                         <div class="col">
                                             <label for="session_price">Session Price</label>
                                             <input id="session_price" class="form-control" type="number"
-                                                name="session_price" placeholder="Type your Session Price" value="{{ $mentee->session_price }}" />
+                                                name="session_price" placeholder="Type your Session Price"
+                                                value="{{ $mentee->session_price }}" />
                                         </div>
                                     </div>
 
@@ -87,13 +89,13 @@
                                     <div class="row mt-4">
                                         <div class="col">
                                             <label for="linkedin">Linkedin URL</label>
-                                            <input type="text" class="form-control" id="linkedin"  name="linkedin_url"
-                                                placeholder="linkedin.com/in/idiab1" value="{{ $mentee->linkedin_url }}" >
+                                            <input type="text" class="form-control" id="linkedin" name="linkedin_url"
+                                                placeholder="linkedin.com/in/idiab1" value="{{ $mentee->linkedin_url }}">
                                         </div>
                                         <div class="col">
                                             <label for="twitter">Twitter URL | X URL</label>
                                             <input type="text" class="form-control" id="twitter" name="twitter_url"
-                                                placeholder="x.com/0xD1ab" value="{{ $mentee->x_url }}" >
+                                                placeholder="x.com/0xD1ab" value="{{ $mentee->x_url }}">
                                         </div>
                                     </div>
 
@@ -117,8 +119,12 @@
                                             <div class="check-type mt-4">
                                                 <label for="gender">Gender</label>
                                                 <select class="form-select" id="gender" name="gender">
-                                                    <option value="1" {{($mentee->gender == "male") ? "selected" : "" ; }}>Male (Defualt)</option>
-                                                    <option value="2" {{($mentee->gender == "female") ? "selected" : "" ; }}>Female</option>
+                                                    <option value="1"
+                                                        {{ $mentee->gender == 'male' ? 'selected' : '' }}>Male
+                                                        (Defualt)</option>
+                                                    <option value="2"
+                                                        {{ $mentee->gender == 'female' ? 'selected' : '' }}>Female
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -128,8 +134,12 @@
                                             <div class="check-type mt-4">
                                                 <label for="accout-type">Account Type</label>
                                                 <select class="form-select" id="accout-type" name="account_type">
-                                                    <option value="1"  {{ ($mentee->account_type == "mentee") ? "selected" : "" ; }}>mentee</option>
-                                                    <option value="2"  {{ ($mentee->account_type == "mentee") ? "selected" : "" ; }}>Mentee (Defualt)</option>
+                                                    <option value="1"
+                                                        {{ $mentee->account_type == 'mentee' ? 'selected' : '' }}>
+                                                        mentee</option>
+                                                    <option value="2"
+                                                        {{ $mentee->account_type == 'mentee' ? 'selected' : '' }}>
+                                                        Mentee (Defualt)</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -138,8 +148,12 @@
                                     <div class="check-type form-group mt-4">
                                         <label for="specialization">Specialization</label>
                                         <select class="form-select" id="specialization" name="specializations[]" multiple required>
+                                            @php
+                                                $id = 1;
+                                            @endphp
                                             @foreach ($specializations as $specialization)
-                                                <option value="{{ $specialization->id }}">
+                                                <option value="{{ $id++ }}"
+                                                    {{ $mentee->specializations->contains('id', $specialization->id) == $specialization->id ? 'selected' : '' }}>
                                                     {{ $specialization->name }}</option>
                                             @endforeach
                                         </select>
