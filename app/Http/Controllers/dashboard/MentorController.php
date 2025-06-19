@@ -78,7 +78,7 @@ class MentorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // dd($request);
+        // dd($request->specializations->count);
         $mentor = User::where('account_type', 'mentor')->find($id);
         $mentor->update([
             "name"              => $request['name'],
@@ -94,9 +94,13 @@ class MentorController extends Controller
             "account_type"      => ($request['account_type'] == 1) ? "mentor" : "mentee",
         ]);
 
-        return view("dashboard.mentors.update", compact('mentor'));
-    }
 
+        if ($request->has('specializations')) {
+            $mentor->specializations()->sync($request->specializations);
+        }
+
+        return redirect()->back();
+    }
     /**
      * Remove the specified resource from storage.
      */

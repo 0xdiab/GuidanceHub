@@ -94,8 +94,11 @@ class MenteeController extends Controller
             "account_type"      => ($request['account_type'] == 1) ? "mentor" : "mentee",
         ]);
 
-        return view("dashboard.mentees.update", compact('mentee'));
-    }
+        if ($request->has('specializations')) {
+            $mentee->specializations()->sync($request->specializations);
+        }
+
+        return redirect()->back();    }
 
     /**
      * Remove the specified resource from storage.
