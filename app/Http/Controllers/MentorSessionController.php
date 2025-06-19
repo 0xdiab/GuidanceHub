@@ -8,29 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class MentorSessionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -42,17 +19,6 @@ class MentorSessionController extends Controller
         return view('Pages.sessions.show', compact('session'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function bookSession(Request $request, string $mentor_id)
     {
         // dd($request);
@@ -68,14 +34,23 @@ class MentorSessionController extends Controller
             'meeting_id' => null,
         ]);
 
-        return redirect()->route('payment.checkout', $session->id);
+        return redirect()->route('sessions.pending', ['id' => Auth::id()]);
+        // return redirect()->route('payment.checkout', $session->id);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function pending()
     {
-        //
+        // dd($request);
+        $menteeId = Auth::id();
+
+        $sessions = MentorSession::with('mentee')
+            ->where('mentee_id', $menteeId)
+            ->where('status', 'pending')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('Pages.sessions.pending', compact("sessions"));
     }
+    
+
 }
