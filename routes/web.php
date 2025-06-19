@@ -37,6 +37,11 @@ Route::middleware('auth')->group(function () {
     // Sessions
     Route::post('/sessions/book/{mentor_id}', [MentorSessionController::class, 'bookSession'])->name('sessions.book');
     Route::get('/sessions/{id}', [MentorSessionController::class, 'show'])->name('sessions.show');
+
+    Route::get('/sessions/pending/{id}', [MentorSessionController::class, 'pending'])->name('sessions.pending');
+
+    Route::post('/mentor/session/{id}/approve', [MentorSessionController::class, 'approve'])->name('mentor.session.approve');
+    Route::post('/mentor/session/{id}/reject', [MentorSessionController::class, 'reject'])->name('mentor.session.reject');
 });
 
 require __DIR__ . '/auth.php';
