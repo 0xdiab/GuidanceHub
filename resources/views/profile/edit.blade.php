@@ -18,7 +18,18 @@
                     <div class="card card-form card-data">
                         {{-- Card-header --}}
                         <div class="card-header">
-                            <h4 class="heading m-0 p-2">Setting</h4>
+                            <div class="row justify-content-around">
+                                <div class="col-6">
+                                    <h4 class="heading m-0 p-2">Setting</h4>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <form action="{{ route('profile.destroy') }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger">Delete Profile</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                         {{-- card-body --}}
                         <div class="card-body">
@@ -41,12 +52,14 @@
                                                 @if (Auth::user()->image)
                                                     <div class="avatar-preview">
                                                         <img src="{{ asset('storage/profile_images/' . Auth::user()->image) }}"
-                                                            class="img-fluid rounded-circle shadow-sm" width="200" height="200" />
+                                                            class="img-fluid rounded-circle shadow-sm" width="200"
+                                                            height="200" />
                                                     </div>
                                                 @else
                                                     <div class="avatar-preview">
                                                         <img src="{{ asset('image/avatar.jpg') }}"
-                                                            class="img-fluid rounded-circle shadow-sm" width="200" height="200" />
+                                                            class="img-fluid rounded-circle shadow-sm" width="200"
+                                                            height="200" />
                                                     </div>
                                                 @endif
                                             </div>
@@ -115,8 +128,9 @@
                                     <div class="row mt-4">
                                         <div class="col">
                                             <label for="linkedin">Linkedin URL</label>
-                                            <input type="text" class="form-control" id="linkedin" name="linkedin_url"
-                                                placeholder="linkedin.com/in/idiab1" value="{{ $user->linkedin_url }}">
+                                            <input type="text" class="form-control" id="linkedin"
+                                                name="linkedin_url" placeholder="linkedin.com/in/idiab1"
+                                                value="{{ $user->linkedin_url }}">
                                         </div>
                                         <div class="col">
                                             <label for="twitter">Twitter URL | X URL</label>
@@ -184,6 +198,14 @@
                                                     {{ $specialization->name }}</option>
                                             @endforeach
                                         </select>
+                                    </div>
+
+                                    {{-- Summary --}}
+                                    <div class="form-group mt-4">
+                                        <label for="summary">Summary</label>
+                                        <textarea class="form-control" name="summary" id="summary" cols="30" rows="10">
+                                            {{ $user->summary }}
+                                        </textarea>
                                     </div>
                                     <div class="form-group mt-4">
                                         <button type="submit" class="btn btn-submit btn-login">Submit</button>
