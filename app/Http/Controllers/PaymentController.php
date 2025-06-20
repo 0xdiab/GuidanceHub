@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MentorSession;
 use App\Models\Payment;
+use App\Services\ZoomService;
 use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\Checkout\Session as StripeSession;
@@ -11,61 +12,6 @@ use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 
     public function createCheckout($session_id)
     {
@@ -123,11 +69,29 @@ class PaymentController extends Controller
             'status' => 'paid',
         ]);
 
+        // $zoom = new ZoomService();
+        // $meeting = $zoom->createMeeting(
+        //     'Mentorship with ' . $session->mentor->name,
+        //     $session->session_time
+        // );
+
+        // if (!isset($meeting['join_url'])) {
+        //     dd('Zoom API Error:', $meeting);
+        // }
+
+        // $session->update([
+        //     'session_link' => $meeting['join_url'],
+        //     'meeting_id' => $meeting['id'],
+        //     'meeting_provider' => 'zoom',
+        // ]);
+
+
+
         return redirect()->route('sessions.show', $session_id);
     }
 
     public function paymentCancel()
     {
-        return redirect()->route('home');
+        return redirect()->route('user.home');
     }
 }
