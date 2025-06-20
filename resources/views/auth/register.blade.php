@@ -75,8 +75,12 @@
                     <div class="check-type form-group mt-4">
                         <label for="specialization">Specialization</label>
                         <select class="form-select" id="mySelect" name="specializations[]" multiple required>
+                            @php
+                                $id = 1;
+                            @endphp
                             @foreach ($specializations as $specialization)
-                                <option value="{{ $specialization->id }}">
+                                <option value="{{ $id++ }}"
+                                    {{ $user->specializations->contains('id', $specialization->id) == $specialization->id ? 'selected' : '' }}>
                                     {{ $specialization->name }}</option>
                             @endforeach
                         </select>
