@@ -21,8 +21,16 @@
                                 <li><a class="dropdown-item" href="{{ route('dashboard.home') }}">Admin Dashboard</a></li>
                             @endif
                         @endauth
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li><a class="dropdown-item" href="{{route('profile.edit')}}">Settings</a></li>
+                        <li><a class="dropdown-item" href="{{ route('profile.index') }}">Profile</a></li>
+                        @if (Auth::user()->account_type == 'mentor')
+                                <li><a class="dropdown-item" href="{{ route('sessions.mentorSessions', Auth::user()->id) }}">My Session</a></li>
+                            @endif
+
+                            @if (Auth::user()->account_type == 'mentee')
+                                <li><a class="dropdown-item" href="{{ route('sessions.menteeSessions', Auth::user()->id) }}">My Session</a></li>
+                            @endif
+                            
+                            <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Settings</a></li>
                         {{-- <li><a class="dropdown-item" href="#">Another action</a></li> --}}
                         <li>
                             <hr class="dropdown-divider">
