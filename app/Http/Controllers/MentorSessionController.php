@@ -113,7 +113,7 @@ class MentorSessionController extends Controller
                 $session->session_link !== 'TBD';
         });
 
-        return view('Pages.sessions.mentor.index', compact('pendingSessions', 'awaitingPaymentSessions', 'confirmedSessionsWithLink', 'confirmedSessionsWithoutLink'));
+        return view('Pages.sessions.mentor.allSessions', compact('pendingSessions', 'awaitingPaymentSessions', 'confirmedSessionsWithLink', 'confirmedSessionsWithoutLink'));
     }
 
 
