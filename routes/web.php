@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Dashboard\AdminHomeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MentorController;
 use App\Http\Controllers\MentorSessionController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SpecializationController;
@@ -20,7 +21,7 @@ Route::get('/specializations/{id}', [SpecializationController::class, 'show'])->
 // About
 Route::get('/about', [AboutController::class, 'index'])->name('user.about');
 
-// Route::get('/mentors/{id}', [MentorController::class, 'show'])->name('mentors.show');
+Route::get('/mentors/{id}', [MentorController::class, 'show'])->name('user.mentor.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
