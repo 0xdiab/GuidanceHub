@@ -5,6 +5,10 @@
     Add a new mentors
 @endsection
 
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('libs/Select2/css/select2.min.css') }}" />
+@endsection
+
 {{-- breadcrumb-item --}}
 @section('breadcrumb-items')
     <li class="breadcrumb-item"><a href="{{ route('dashboard.mentors.index') }}">Mentors</a></li>
@@ -135,7 +139,7 @@
                                     {{-- Specializations --}}
                                     <div class="check-type form-group mt-4">
                                         <label for="specialization">Specialization</label>
-                                        <select class="form-select" id="specialization" name="specializations[]" multiple
+                                        <select class="form-select" id="mySelect" name="specializations[]" multiple
                                             required>
                                             @foreach ($specializations as $specialization)
                                                 <option value="{{ $specialization->id }}">
@@ -158,4 +162,15 @@
         {{-- ./Container --}}
     </section>
     {{-- end of mentors section --}}
+@endsection
+@section('scripts')
+    <script src="{{ asset('libs/Select2/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('libs/Select2/js/select2.min.js') }}"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#mySelect').select2();
+        });
+    </script>
 @endsection
