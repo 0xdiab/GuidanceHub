@@ -31,22 +31,30 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        // dd($request);
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'name'            => $request->name,
+            'email'           => $request->email,
+            'password'        => Hash::make($request->password),
+            'position'        => $request->position,
+            "account_type"    => ($request['account_type'] == 1) ? "mentor" : "mentee",
         ]);
 
+
+        if ($request->has('specializations')) {
+            $user->specializations()->sync($request->specializations);
+        }
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('user.home', absolute: false));
+        return redirect(route('profile.edit', absolute: false));
     }
 }
