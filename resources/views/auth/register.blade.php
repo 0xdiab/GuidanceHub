@@ -4,7 +4,9 @@
 @section('page_name')
     Login
 @endsection
-
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('libs/Select2/css/select2.min.css') }}" />
+@endsection
 {{-- remove navbar --}}
 @section('navbar')
 @endsection
@@ -19,23 +21,8 @@
         <div class="content d-flex justify-content-center align-items-center">
             {{-- Login Form --}}
             <div class="login-form">
-                <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('register') }}">
                     @csrf
-                    {{-- Avatar --}}
-                    <div class="form-group">
-                        <label for="imageUpload">Avatar</label>
-                        <div class="avatar-upload">
-                            <div class="avatar-edit">
-                                <input type='file' id="imageUpload" name="image" accept=".png, .jpg, .jpeg" />
-                            </div>
-                            {{-- <div class="avatar-preview">
-                                <div id="imagePreview"
-                                    style="background-image: url({{ asset('uploads/users/' . Auth::user()->profile->image) }});">
-                                </div>
-                            </div> --}}
-                        </div>
-                    </div>
-
                     <!-- Name -->
                     <div class="mt-4">
                         <label for="name">Name</label>
@@ -67,72 +54,34 @@
 
                         <input id="password_confirmation" class="form-control" type="password" name="password_confirmation"
                             required autocomplete="new-password" placeholder="Type your password agian" />
-
                         <error :messages="$errors - > get('password_confirmation')" class="mt-2" />
                     </div>
 
                     {{-- Current Position --}}
-                    <div class="row mt-4">
-                        <div class="col">
-                            <label for="position">Current Position</label>
-                            <input id="position" class="form-control" type="text" name="position"
+                    <div class="form-group mt-4">
+                        <label for="position">Current Position</label>
+                        <input id="position" class="form-control" type="text" name="position"
                             placeholder="Type your current position" />
-                        </div>
-                        <div class="col">
-                            <label for="session_price">Session Price</label>
-                            <input id="session_price" class="form-control" type="text" name="session_price"
-                            placeholder="Type your Session Price" />
-                        </div>
                     </div>
 
-                    {{-- Social Media URLs --}}
-                    <div class="row mt-4">
-                        <div class="col">
-                            <label for="linkedin">Linkedin URL</label>
-                            <input type="text" class="form-control" id="linkedin" placeholder="linkedin.com/in/idiab1">
-                        </div>
-                        <div class="col">
-                            <label for="twitter">Twitter URL</label>
-                            <input type="text" class="form-control" id="twitter" placeholder="x.com/0xD1ab">
-                        </div>
+                    <div class="form-group check-type mt-4">
+                        <label for="accout-type">Account Type</label>
+                        <select class="form-select" id="accout-type" name="account_type">
+                            <option value="1">Mentor</option>
+                            <option value="2" selected>Mentee (Defualt)</option>
+                        </select>
+                    </div>
+                    {{-- Specializations --}}
+                    <div class="check-type form-group mt-4">
+                        <label for="specialization">Specialization</label>
+                        <select class="form-select" id="mySelect" name="specializations[]" multiple required>
+                            @foreach ($specializations as $specialization)
+                                <option value="{{ $specialization->id }}">
+                                    {{ $specialization->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
-                    {{-- Social Media URLs --}}
-                    <div class="row mt-4">
-                        <div class="col">
-                            <label for="github">Github URL</label>
-                            <input type="text" class="form-control" id="github" placeholder="github.com/0xdiab">
-                        </div>
-                        <div class="col">
-                            <label for="cvurl">CV URL</label>
-                            <input type="password" class="form-control" id="cvurl" placeholder="example.com/cv">
-                        </div>
-                    </div>
-
-                    <div class="row mt-4">
-                        {{-- Check on Gender --}}
-                        <div class="col">
-                            <div class="check-type mt-4">
-                                <label for="gender">Gender</label>
-                                <select class="form-select" id="gender">
-                                    <option value="1" selected>Male (Defualt)</option>
-                                    <option value="2">Female</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        {{-- Check on mentors or mentee --}}
-                        <div class="col">
-                            <div class="check-type mt-4">
-                                <label for="accout-type">Account Type</label>
-                                <select class="form-select" id="accout-type">
-                                    <option value="1">Mentor</option>
-                                    <option value="2" selected>Mentee (Defualt)</option>
-                                </select>
-                            </div>
-                        </div>
-
-                    </div>
                     <div class="d-flex align-items-center my-4">
                         <button class="btn btn-login" type="submit">
                             {{ __('Register') }}
@@ -163,6 +112,17 @@
 
 
 
+@section('scripts')
+    <script src="{{ asset('libs/Select2/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('libs/Select2/js/select2.min.js') }}"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#mySelect').select2();
+        });
+    </script>
+@endsection
 
 
 
