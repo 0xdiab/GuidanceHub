@@ -38,10 +38,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/sessions/book/{mentor_id}', [MentorSessionController::class, 'bookSession'])->name('sessions.book');
     Route::get('/sessions/{id}', [MentorSessionController::class, 'show'])->name('sessions.show');
 
-    Route::get('/sessions/pending/{id}', [MentorSessionController::class, 'pending'])->name('sessions.pending');
+    Route::get('/sessions/menteeSession/{id}', [MentorSessionController::class, 'menteeSessions'])->name('sessions.menteeSessions');
+    Route::get('/sessions/mentorSessions/{id}', [MentorSessionController::class, 'mentorSessions'])->name('sessions.mentorSessions');
 
     Route::post('/mentor/session/{id}/approve', [MentorSessionController::class, 'approve'])->name('mentor.session.approve');
     Route::post('/mentor/session/{id}/reject', [MentorSessionController::class, 'reject'])->name('mentor.session.reject');
+
+    Route::post('/sessions/{id}/create-zoom', [MentorSessionController::class, 'createZoomLink'])->name('sessions.createZoom');
 });
 
 require __DIR__ . '/auth.php';
