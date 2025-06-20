@@ -25,7 +25,7 @@ Route::get('/about', [AboutController::class, 'index'])->name('user.about');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('/profileSettings', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profileSettings', [ProfileController::class, 'update'])->name('profile.update');
+    Route::put('/profileSettings', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profileSettings', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Payment 
