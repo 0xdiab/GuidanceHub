@@ -48,6 +48,7 @@
                                 <div class="card-footer">
                                     <form action="{{ route('sessions.book', $mentor->id) }}" method="POST">
                                         @csrf
+                                        <input type="hidden" name="specialization_id" value="{{ $specialization->id }}">
                                         <button type="submit" class="btn btn-primary">
                                             Book Now <i class="fa-solid fa-plus"></i>
                                         </button>
