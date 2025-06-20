@@ -39,7 +39,7 @@
                                 {{-- ./card-header --}}
                                 {{-- Card-body --}}
                                 <div class="card-body mentor-info text-center">
-                                    <a class="" href="">{{ $mentor->name }}</a>
+                                    <a class="" href="{{ route('user.mentor.show', $mentor->id) }}">{{ $mentor->name }}</a>
                                     <p>{{ $mentor->position }}</p>
                                 </div>
                                 {{-- ./Card-body --}}
