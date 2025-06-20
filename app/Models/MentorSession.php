@@ -15,12 +15,18 @@ class MentorSession extends Model
         'is_paid',
         'payment_id',
         'meeting_provider',
-        'meeting_id'
+        'meeting_id',
+        'specialization_id'
     ];
+
+    protected $casts = [
+        'session_time' => 'datetime',
+    ];
+
 
     public function mentor()
     {
-        return $this->belongsTo(User::class, 'mentor_id');
+        return $this->belongsTo(User::class, 'mentor_id')->with('specializations');
     }
 
     public function mentee()
@@ -36,5 +42,10 @@ class MentorSession extends Model
     public function payment()
     {
         return $this->hasOne(Payment::class, 'session_id');
+    }
+
+    public function specialization()
+    {
+        return $this->belongsTo(Specialization::class);
     }
 }
