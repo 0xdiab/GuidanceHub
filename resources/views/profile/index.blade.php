@@ -7,119 +7,105 @@
 
 {{-- Content --}}
 @section('content')
-    <section class="content profile-section py-4">
+    {{-- Profile --}}
+    <div class="profile-section section py-5">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    {{-- profile header --}}
-                    <div class="profile-header">
-                        <div class="row">
-                            <div class="col-md-4">
-                                {{-- Profile image --}}
-                                <div class="profile-image">
-                                    <img class="img-fluid" src="{{ asset('image/avatar.jpg') }}"
-                                        alt="avatar image">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    {{-- Profile header --}}
+                    <div class="profile-header rounded shadow-sm p-3 mb-4">
+                        <div class="row mb-4">
+                            <div class="col-8">
+                                <div class="profile-image-container">
+                                    <img class="img-fluid rounded-circle shadow-sm"
+                                        src="{{ Auth::user()->image ? asset('storage/profile_images/' . Auth::user()->image) : asset('image/avatar.jpg') }}"
+                                        width="200" height="200" />
                                 </div>
-                                {{-- ./profile-image --}}
+                                <div class="mb-2 pt-3">
+                                    <h2 class="mb-0 me-2">{{ Auth::user()->name }}</h2>
+                                    <p class="text-muted mb-3 fs-5">
+                                        {{ Auth::user()->position }}
+                                        @if (Auth::user()->session_price)
+                                            <span class="fw-bold"> - ${{ Auth::user()->session_price }}</span>
+                                        @endif
+                                    </p>
+                                </div>
+
                             </div>
-                            <div class="col-md-8">
-                                {{-- profile-info --}}
-                                <div class="profile-info">
-                                    <h2>Profile Name</h2>
-                                    <span>Position title</span>
-                                    <div class="languages">
-                                        <p>Speak: English, Arabic</p>
-                                    </div>
-                                    {{-- social-media --}}
-                                    <ul class="social-media">
-                                        <li>
-                                            <a class="btn btn-danger" href="" target="_blank">test</a>
+                            <div class="col-4">
+                                {{-- Contacts --}}
+                                <div class="contacts rounded p-3 mb-3">
+                                    <h3>Contact Details</h3>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-3">
+                                            <span>Email: </span>
+                                            <a href="mailto:{{ Auth::user()->email }}">
+                                                {{ Auth::user()->email }}
+                                            </a>
+                                        </li>
+                                        {{-- Linkedin --}}
+                                        <li class="mb-3">
+                                            <span>Linkedin: </span>
+                                            @if (Auth::user()->linkedin_url)
+                                                <a href="{{ Auth::user()->linkedin_url }}" target="_blank">
+                                                    {{ Auth::user()->linkedin_url }}
+                                                </a>
+                                            @else
+                                                <a class="text-dark" href="{{ route('profile.edit') }}"><i
+                                                        class="fas fa-plus-circle"></i> Add</a>
+                                            @endif
+                                        </li>
+                                        {{-- X --}}
+                                        <li class="mb-3">
+                                            <span>x: </span>
+                                            @if (Auth::user()->x_url)
+                                                <a href="{{ Auth::user()->x_url }}" target="_blank">
+                                                    {{ Auth::user()->x_url }}
+                                                </a>
+                                            @else
+                                                <a class="text-dark" href="{{ route('profile.edit') }}"><i
+                                                        class="fas fa-plus-circle"></i> Add</a>
+                                            @endif
+                                        </li>
+
+                                        {{-- CV --}}
+                                        <li class="mb-3">
+                                            <span>CV: </span>
+                                            @if (Auth::user()->cv_url)
+                                                <a href="{{ Auth::user()->cv_url }}" target="_blank">
+                                                    {{ Auth::user()->cv_url }}
+                                                </a>
+                                            @else
+                                                <a class="text-dark" href="{{ route('profile.edit') }}"><i
+                                                        class="fas fa-plus-circle"></i> Add</a>
+                                            @endif
                                         </li>
                                     </ul>
-                                    {{-- ./social-media --}}
                                 </div>
-                                {{-- ./profile-info --}}
                             </div>
                         </div>
                     </div>
-                    {{-- ./profile-header --}}
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="row py-4">
-                    <div class="col-md-7 col-sm-12">
-                        <nav>
-                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <button class="nav-link active" id="nav-summary-tab" data-bs-toggle="tab"
-                                    data-bs-target="#nav-summary" type="button" role="tab" aria-controls="nav-summary"
-                                    aria-selected="true">Summary</button>
-                                <button class="nav-link" id="nav-reviews-tab" data-bs-toggle="tab"
-                                    data-bs-target="#nav-reviews" type="button" role="tab" aria-controls="nav-reviews"
-                                    aria-selected="false">Reviews</button>
-                                <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
-                                    data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
-                                    aria-selected="false">Contact</button>
-                            </div>
-                        </nav>
-                        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="nav-summary" role="tabpanel"
-                                aria-labelledby="nav-summary-tab">
-                                <div class="row py-4">
-                                    <div class="col-md-7 col-sm-12">
-                                        {{-- summary --}}
-                                        <div class="summary">
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ipsum veniam
-                                                maxime
-                                                quo consectetur
-                                                nihil,
-                                                quos qui eveniet beatae vero dicta numquam, quaerat illum perferendis
-                                                tenetur
-                                                quam corrupti
-                                                voluptatem quae
-                                                perspiciatis necessitatibus modi, officia tempora voluptatibus! Velit
-                                                exercitationem, tempore
-                                                beatae,
-                                                eum obcaecati ex quod nulla dolor provident, ipsa voluptates sed!</p>
-                                        </div>
-                                        {{-- ./summary --}}
-
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">
-
-                            </div>
-                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                ...
-                            </div>
-                        </div>
-
+                    {{-- About profile --}}
+                    <div class="about-profile rounded shadow-sm p-3 mb-4">
+                        <h3>Summary</h3>
+                        @if (Auth::user()->summary)
+                            <p>{{ Auth::user()->summary }}</p>
+                        @else
+                            <p>You are not submitted your summary.</p>
+                            <a class="text-dark" href="{{ route('profile.edit') }}"><i class="fas fa-plus-circle"></i>
+                                Add</a>
+                        @endif
                     </div>
-                    <div class="col-md-5 col-sm-12 mx-auto">
-                        {{-- skills --}}
-                        <ul class="skills">
-                            <li>JavaScript</li>
-                            <li>PHP</li>
-                            <li>MySQL</li>
-                            <li>HTML</li>
-                            <li>Python</li>
-                            <li>Laravel</li>
-                        </ul>
-                        {{-- ./skills --}}
+
+                    {{-- About profile --}}
+                    <div class="skills-profile rounded shadow-sm p-3 mb-3">
+                        <h3>Skills</h3>
+                        {{-- <p>{{ Auth::user() }}</p> --}}
                     </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12">
-
 
                 </div>
             </div>
-
-
         </div>
-    </section>
+    </div>
 @endsection
