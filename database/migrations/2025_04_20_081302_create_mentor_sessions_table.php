@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('mentor_id');
             $table->unsignedBigInteger('mentee_id');
-
+            $table->unsignedBigInteger('specialization_id');
             $table->timestamp('session_time');
             $table->string('session_link');
             $table->enum('status', ['pending', 'confirmed', 'cancelled', 'completed'])->default('pending');
@@ -27,7 +27,7 @@ return new class extends Migration
 
             $table->foreign('mentor_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('mentee_id')->references('id')->on('users')->onDelete('cascade');
-
+            $table->foreign('specialization_id')->references('id')->on('specializations')->onDelete('cascade');
         });
     }
 
