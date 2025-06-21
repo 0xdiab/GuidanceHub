@@ -200,6 +200,22 @@
                                         </select>
                                     </div>
 
+                                    {{-- skills --}}
+                                    <div class="check-type form-group mt-4">
+                                        <label for="skill">Skills</label>
+                                        <select class="form-select" id="skills" name="skills[]" multiple
+                                            required>
+                                            @php
+                                                $id = 1;
+                                            @endphp
+                                            @foreach ($skills as $skill)
+                                                <option value="{{ $id++ }}"
+                                                    {{ $user->skills && $user->skills->contains('id', $skill->id) ? 'selected' : '' }} >
+                                                    {{ $skill->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
                                     {{-- Summary --}}
                                     <div class="form-group mt-4">
                                         <label for="summary">Summary</label>
@@ -207,6 +223,7 @@
                                             {{ $user->summary }}
                                         </textarea>
                                     </div>
+
                                     <div class="form-group mt-4">
                                         <button type="submit" class="btn btn-submit btn-login">Submit</button>
                                     </div>
@@ -231,6 +248,9 @@
     <script>
         $(document).ready(function() {
             $('#mySelect').select2();
+        });
+        $(document).ready(function() {
+            $('#skills').select2();
         });
     </script>
 @endsection
