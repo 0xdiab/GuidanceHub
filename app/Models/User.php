@@ -78,17 +78,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Specialization::class, 'specialization_user', 'mentor_id', 'specialization_id')->withTimestamps();
     }
 
-    public function languages()
-    {
-        return $this->belongsToMany(Language::class, 'user_language')
-            ->withPivot('proficiency')
-            ->withTimestamps();
-    }
-
     // User have many reviews
-    public function reviews()
+    public function receivedReviews()
     {
-        return $this->hasMany(Review::class, 'mentee_id');
+        return $this->hasMany(Review::class, 'reviewee_id');
     }
 
     public function payments()

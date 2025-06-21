@@ -6,12 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model
 {
-    //
+    protected $fillable = [
+        'session_id',
+        'reviewer_id',
+        'reviewee_id',
+        'rating',
+        'review'
+    ];
 
-    public function mentor()
+    public function reviewer()
     {
-        return $this->belongsTo(User::class, 'mentee_id');
+        return $this->belongsTo(User::class, 'reviewer_id');
     }
-
-    
 }
