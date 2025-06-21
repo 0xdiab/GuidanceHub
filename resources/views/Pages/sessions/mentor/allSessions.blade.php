@@ -35,35 +35,41 @@
                                     {{-- Card-body --}}
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-6">
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        {{-- details --}}
-                                                        <div class="details">
-                                                            <p><strong>Mentee:</strong> {{ $session->mentee->name }}</p>
-                                                            <p><strong>Specialization:</strong>
-                                                                {{ $session->specialization->name }}</p>
-                                                            <p><strong>Session Time:</strong>
-                                                                {{ $session->session_time->format('d M Y - h:i A') }}</p>
-                                                            <p><strong>Status:</strong> {{ ucfirst($session->status) }}</p>
-                                                            <p><strong>Paid:</strong> {{ $session->is_paid ? 'Yes' : 'No' }}
-                                                            </p>
-                                                            {{-- buttons --}}
-                                                            <div class="buttons">
+                                            <div class="col-12">
+                                                {{-- details --}}
+                                                <div class="details">
+                                                    <p><strong>Mentee:</strong> {{ $session->mentee->name }}</p>
+                                                    <p><strong>Specialization:</strong>
+                                                        {{ $session->specialization->name }}</p>
+                                                    <p><strong>Session Time:</strong>
+                                                        {{ $session->session_time->format('d M Y - h:i A') }}</p>
+                                                    <p><strong>Status:</strong> {{ ucfirst($session->status) }}</p>
+                                                    <p><strong>Paid:</strong> {{ $session->is_paid ? 'Yes' : 'No' }}
+                                                    </p>
+
+                                                    {{-- buttons --}}
+                                                    <div class="buttons mt-3">
+                                                        <div class="row">
+                                                            <div class="col-6">
                                                                 {{-- Zoom Link --}}
-                                                                @if ($session->session_link)
-                                                                    <a href="{{ $session->session_link }}" target="_blank"
-                                                                        class="btn btn-primary">
+                                                                @if ($session->session_link === null || $session->session_link !== 'TBD')
+                                                                    <a href="{{ $session->session_link }}"
+                                                                        target="_blank" class="btn btn-dark">
                                                                         Join Session
+                                                                    </a>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-6 text-end">
+                                                                @if ($session->session_link === null || $session->session_link !== 'TBD')
+                                                                    {{-- Review --}}
+                                                                    <a href="{{ route('review.create', $session->id) }}"
+                                                                        target="_blank" class="btn btn-review">
+                                                                        Leave a Review
                                                                     </a>
                                                                 @endif
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-6 d-flex justify-content-end align-items-center">
-
-                                                    </div>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -111,7 +117,8 @@
                                                         <form action="{{ route('sessions.createZoom', $session->id) }}"
                                                             method="POST">
                                                             @csrf
-                                                            <button type="submit" class="btn btn-primary">Create Zoom Link</button>
+                                                            <button type="submit" class="btn btn-dark">Create Zoom
+                                                                Link</button>
                                                         </form>
                                                     @endif
 
@@ -178,36 +185,36 @@
 
 
                     <!--
-                        {{-- awaitingPaymentSessions --}}
-                        @if ($awaitingPaymentSessions->count() > 0)
+                            {{-- awaitingPaymentSessions --}}
+                            @if ($awaitingPaymentSessions->count() > 0)
     <div class="sessions-cancelled rounded shadow-sm mb-3">
-                                {{-- Heading --}}
-                                <div class="heading text-center mb-4">
-                                    <h4>Your session approved</h4>
-                                </div>
-                                @foreach ($awaitingPaymentSessions as $session)
-    {{-- Sessions-cancelled-card --}}
-                                    <div class="sessions-cancelled-card card rounded shadow-sm mb-3">
-                                        {{-- Card-body --}}
-                                        <div class="card-body">
-                                            <p><strong>Mentee:</strong> {{ $session->mentee->name }}</p>
-                                            <p><strong>Session Time:</strong> {{ $session->session_time->format('d M Y - h:i A') }}</p>
-                                            <p><strong>Status:</strong> {{ ucfirst($session->status) }}</p>
-                                            <p><strong>Paid:</strong> {{ $session->is_paid ? 'Yes' : 'No' }}</p>
-                                        </div>
+                                    {{-- Heading --}}
+                                    <div class="heading text-center mb-4">
+                                        <h4>Your session approved</h4>
                                     </div>
-                                    {{-- ./Sessions-cancelled-card --}}
+                                    @foreach ($awaitingPaymentSessions as $session)
+    {{-- Sessions-cancelled-card --}}
+                                        <div class="sessions-cancelled-card card rounded shadow-sm mb-3">
+                                            {{-- Card-body --}}
+                                            <div class="card-body">
+                                                <p><strong>Mentee:</strong> {{ $session->mentee->name }}</p>
+                                                <p><strong>Session Time:</strong> {{ $session->session_time->format('d M Y - h:i A') }}</p>
+                                                <p><strong>Status:</strong> {{ ucfirst($session->status) }}</p>
+                                                <p><strong>Paid:</strong> {{ $session->is_paid ? 'Yes' : 'No' }}</p>
+                                            </div>
+                                        </div>
+                                        {{-- ./Sessions-cancelled-card --}}
     @endforeach
 
-                            </div>
+                                </div>
 @else
     <div class="card rounded shadow-sm mb-3">
-                                <div class="card-body">
-                                    <p class="m-0">You have no cancelled sessions</p>
+                                    <div class="card-body">
+                                        <p class="m-0">You have no cancelled sessions</p>
+                                    </div>
                                 </div>
-                            </div>
     @endif
-                        -->
+                            -->
                 </div>
             </div>
         </div>

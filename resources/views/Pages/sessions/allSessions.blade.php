@@ -25,7 +25,7 @@
                         <div class="sessions-confirmed rounded shadow-sm mb-3">
                             {{-- Heading --}}
                             <div class="heading text-center mb-4">
-                                <h4>Your session confirmed</h4>
+                                <h4>Your zoom session</h4>
                             </div>
                             @foreach ($zoomSessions as $session)
                                 {{-- Sessions-Confirmed-card --}}
@@ -33,30 +33,44 @@
                                     {{-- Card-body --}}
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-6">
+                                            <div class="col-12">
                                                 {{-- details --}}
                                                 <div class="details">
                                                     <p><strong>Mentor:</strong> {{ $session->mentor->name }}</p>
-                                                    <p><strong>Specialization:</strong> {{ $session->specialization->name }}</p>
+                                                    <p><strong>Specialization:</strong> {{ $session->specialization->name }}
+                                                    </p>
                                                     <p><strong>Time:</strong>
                                                         {{ $session->session_time->format('d M Y - h:i A') }}</p>
                                                     <p><strong>Status:</strong> {{ ucfirst($session->status) }}</p>
                                                     <p><strong>Paid:</strong>
                                                         {{ $session->is_paid == 1 ? 'Yes' : 'No' }}</p>
-                                                        {{-- buttons --}}
-                                                        <div class="buttons">
-                                                            {{-- Zoom Link --}}
-                                                            @if ($session->session_link)
-                                                                <a href="{{ $session->session_link }}" target="_blank"
-                                                                    class="btn btn-primary">
-                                                                    Join Session
-                                                                </a>
-                                                            @endif
+
+                                                    {{-- buttons --}}
+                                                    <div class="buttons mt-3">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                {{-- Zoom Link --}}
+                                                                @if ($session->session_link === null || $session->session_link !== 'TBD')
+                                                                    <a href="{{ $session->session_link }}" target="_blank"
+                                                                        class="btn btn-dark">
+                                                                        Join Session
+                                                                    </a>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-6 text-end">
+                                                                @if ($session->session_link === null || $session->session_link !== 'TBD')
+                                                                    {{-- Review --}}
+                                                                    <a href="{{ route('review.create', $session->id) }}"
+                                                                        target="_blank" class="btn btn-review">
+                                                                        Leave a Review
+                                                                    </a>
+                                                                @endif
+                                                            </div>
                                                         </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-6 d-flex justify-content-end align-items-center">
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -66,21 +80,21 @@
                     @else
                         <div class="card rounded shadow-sm mb-3">
                             <div class="card-body">
-                                <p class="m-0">You have no confirmed sessions</p>
+                                <p class="m-0">You have no zoom sessions</p>
                             </div>
                         </div>
                     @endif
                 </div>
                 <div class="col-5">
                     {{-- Approved --}}
-                    @if ($confirmedSessions->count() > 0)
+                    @if ($approvedSessions->count() > 0)
                         <div class="sessions-confirmed rounded shadow-sm mb-3">
                             {{-- Heading --}}
                             <div class="heading text-center mb-4">
                                 <h4>Your session approved</h4>
                                 <p>You should pay now</p>
                             </div>
-                            @foreach ($confirmedSessions as $session)
+                            @foreach ($approvedSessions as $session)
                                 {{-- Sessions-Confirmed-card --}}
                                 <div class="sessions-confirmed-card card rounded shadow-sm mb-3">
                                     {{-- Card-body --}}
@@ -90,19 +104,20 @@
                                                 {{-- details --}}
                                                 <div class="details">
                                                     <p><strong>Mentor:</strong> {{ $session->mentor->name }}</p>
-                                                    <p><strong>Specialization:</strong> {{ $session->specialization->name }}</p>
+                                                    <p><strong>Specialization:</strong> {{ $session->specialization->name }}
+                                                    </p>
                                                     <p><strong>Time:</strong>
                                                         {{ $session->session_time->format('d M Y - h:i A') }}</p>
                                                     <p><strong>Status:</strong> {{ ucfirst($session->status) }}</p>
                                                     <p><strong>Paid:</strong>
                                                         {{ $session->is_paid == 0 ? 'No' : 'True' }}</p>
-                                                        {{-- buttons --}}
-                                                        <div class="buttons">
-                                                            <a href="{{ route('payment.checkout', $session->id) }}"
-                                                                class="btn btn-success ml-2">
-                                                                Pay Now
-                                                            </a>
-                                                        </div>
+                                                    {{-- buttons --}}
+                                                    <div class="buttons">
+                                                        <a href="{{ route('payment.checkout', $session->id) }}"
+                                                            class="btn btn-success ml-2">
+                                                            Pay Now
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-6 d-flex justify-content-end align-items-center">
