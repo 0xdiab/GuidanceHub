@@ -94,12 +94,48 @@
                         @endif
                     </div>
 
-                    {{-- skills profile --}}
+                    {{-- Skills profile --}}
                     <div class="skills-profile rounded shadow-sm p-3 mb-5">
                         <h3>Skills</h3>
-                        {{-- <p>{{ $mentor }}</p> --}}
+                        @if ($mentor->skills->count() > 0)
+                            <ul class="list-unstyled skills">
+                                @foreach ($mentor->skills as $skill)
+                                    <li><span>{{ $skill->name }}</span></li>
+                                @endforeach
+                            </ul>
+                            <a class="text-dark" href="{{ route('profile.edit') }}"><i class="fas fa-plus-circle"></i>
+                                Add</a>
+                        @else
+                            <p>You are not submitted your skills.</p>
+                            <a class="text-dark" href="{{ route('profile.edit') }}"><i class="fas fa-plus-circle"></i>
+                                Add</a>
+                        @endif
                     </div>
 
+                    {{-- reviews profile --}}
+                    <div class="reviews-profile rounded shadow-sm p-3 mb-5">
+                        <h3>Reviews</h3>
+                        @if ($reviews->count() > 0)
+                            <ul class="list-unstyled skills">
+                                @foreach ($reviews as $review)
+                                    <li class="review border rounded p-3 mb-3">
+                                        <div class="row">
+                                            <div class="col-8">
+                                                {{ $review->reviewer->name }} - {{ $review->session->specialization->name ?? 'N/A' }} - {{ $review->created_at->format('d M Y - h:i A') }}
+                                                <p> {{ $review->review ?? 'No comment' }}</p>
+                                            </div>
+                                            <div class="col-4 text-end">
+                                                <div><strong>Rating:</strong> {{ $review->rating }} / 5</div>
+                                            </div>
+                                        </div>
+
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @else
+                            <p>No reviews yet.</p>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

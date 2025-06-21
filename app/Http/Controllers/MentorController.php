@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -37,8 +38,11 @@ class MentorController extends Controller
     public function show(string $id)
     {
         $mentor = User::where('account_type', 'mentor')->find($id);
-
-        return view('Pages.profile_mentor', compact("mentor"));
+        $reviews = Review::with(['reviewer', 'session'])
+            ->where('reviewee_id', $mentor->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+        return view('Pages.profile_mentor', compact("mentor", "reviews"));
     }
 
     /**
