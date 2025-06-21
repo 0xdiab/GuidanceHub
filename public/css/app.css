@@ -42,6 +42,14 @@ p>a {
     color: var(--orange-color) !important;
 }
 
+.btn-review {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    line-height: 1.3;
+    color: var(--dark-color) !important;
+    background-color: var(--main-color);
+}
+
 .heading-section {
     color: var(--dark-color);
 
@@ -61,7 +69,7 @@ p>a {
 
 .navbar .navbar-nav .nav-link,
 .navbar .navbar-nav .nav-link,
-.navbar .profile .dropdown-toggle  {
+.navbar .profile .dropdown-toggle {
     font-size: 16.5px;
     color: var(--dark-color);
 }
@@ -394,6 +402,7 @@ p>a {
 .profile-setting .card-form .card-header {
     background-color: var(--dark-color);
 }
+
 .profile-setting .card-form .card-header h4 {
     color: var(--light-color);
 }
