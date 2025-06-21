@@ -116,6 +116,30 @@
                         @endif
                     </div>
 
+                    {{-- reviews profile --}}
+                    <div class="reviews-profile rounded shadow-sm p-3 mb-5">
+                        <h3>Reviews</h3>
+                        @if ($reviews->count() > 0)
+                            <ul class="list-unstyled skills">
+                                @foreach ($reviews as $review)
+                                    <li class="review border rounded p-3 mb-3">
+                                        <div class="row">
+                                            <div class="col-8">
+                                                {{ $review->reviewer->name }} - {{ $review->session->specialization->name ?? 'N/A' }} - {{ $review->created_at->format('d M Y - h:i A') }}
+                                                <p> {{ $review->review ?? 'No comment' }}</p>
+                                            </div>
+                                            <div class="col-4 text-end">
+                                                <div><strong>Rating:</strong> {{ $review->rating }} / 5</div>
+                                            </div>
+                                        </div>
+
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @else
+                            <p>No reviews yet.</p>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
