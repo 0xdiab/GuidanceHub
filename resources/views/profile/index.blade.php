@@ -98,13 +98,15 @@
                         @endif
                     </div>
 
-                    {{-- About profile --}}
+                    {{-- Skills profile --}}
                     <div class="skills-profile rounded shadow-sm p-3 mb-5">
                         <h3>Skills</h3>
                         @if ($user->skills->count() > 0)
-                            @foreach ($user->skills as $skill)
-                                <span>{{$user->skills->name}}</span>
-                            @endforeach
+                            <ul class="list-unstyled skills">
+                                @foreach ($user->skills as $skill)
+                                    <li><span>{{ $skill->name }}</span></li>
+                                @endforeach
+                            </ul>
                             <a class="text-dark" href="{{ route('profile.edit') }}"><i class="fas fa-plus-circle"></i>
                                 Add</a>
                         @else
