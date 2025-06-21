@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\MentorSession;
+use App\Models\Skill;
 use App\Models\Specialization;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -25,10 +26,12 @@ class ProfileController extends Controller
     public function edit(Request $request): View
     {
         $specializations = Specialization::all();
+        $skills = Skill::all();
 
         return view('profile.edit', [
             'user' => $request->user(),
-            'specializations' => $specializations
+            'specializations' => $specializations,
+            'skills' => $skills
         ]);
     }
 
@@ -66,6 +69,10 @@ class ProfileController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image')->store('profile_images', 'public');
             $request->user()->update(['image' => basename($image)]);
+        }
+
+        if ($request->has('skills')) {
+            $request->user()->skills()->sync($request->skills);
         }
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
