@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\MentorSession;
+use App\Models\Review;
 use App\Models\Skill;
 use App\Models\Specialization;
 use Illuminate\Http\RedirectResponse;
@@ -18,7 +19,11 @@ class ProfileController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('profile.index', compact('user'));
+        $reviews = Review::with(['reviewer', 'session'])
+            ->where('reviewee_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+        return view('profile.index', compact('user', 'reviews'));
     }
     /**
      * Display the user's profile form.
