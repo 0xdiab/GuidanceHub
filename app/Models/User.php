@@ -78,8 +78,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Specialization::class, 'specialization_user', 'mentor_id', 'specialization_id')->withTimestamps();
     }
 
-    // User have many reviews
-    public function receivedReviews()
+    public function reviewsGiven()
+    {
+        return $this->hasMany(Review::class, 'reviewer_id');
+    }
+
+    public function reviewsReceived()
     {
         return $this->hasMany(Review::class, 'reviewee_id');
     }

@@ -18,4 +18,14 @@ class Review extends Model
     {
         return $this->belongsTo(User::class, 'reviewer_id');
     }
+
+    public function reviewee()
+    {
+        return $this->belongsTo(User::class, 'reviewee_id');
+    }
+
+    public function session()
+    {
+        return $this->belongsTo(MentorSession::class, 'session_id');
+    }
 }

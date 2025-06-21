@@ -34,9 +34,9 @@ class MentorSession extends Model
         return $this->belongsTo(User::class, 'mentee_id');
     }
 
-    public function review()
+    public function reviews()
     {
-        return $this->hasOne(Review::class, 'session_id');
+        return $this->hasMany(Review::class, 'session_id');
     }
 
     public function payment()
