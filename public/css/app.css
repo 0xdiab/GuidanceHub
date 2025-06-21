@@ -60,10 +60,12 @@ p>a {
 }
 
 .navbar .navbar-nav .nav-link,
-.navbar .navbar-nav .nav-link {
+.navbar .navbar-nav .nav-link,
+.navbar .profile .dropdown-toggle  {
     font-size: 16.5px;
     color: var(--dark-color);
 }
+
 
 
 /* End of Navbar */
@@ -371,26 +373,6 @@ p>a {
     border-radius: 50%;
 
 }
-
-.profile-section .profile-header .profile-info {}
-
-.profile-section .profile-header .profile-info h2 {}
-
-.profile-section .profile-header .profile-info span {}
-
-.profile-section .profile-header .profile-info .languages {}
-
-.profile-section .profile-header .profile-info p {}
-
-.profile-section .profile-header .profile-info .social-media {}
-
-.profile-section .profile-header .profile-info li {}
-
-.profile-section .profile-header .profile-info li a {}
-
-.profile-section .summary {}
-
-.profile-section .summary p {}
 
 .profile-section .skills {
     list-style: none;

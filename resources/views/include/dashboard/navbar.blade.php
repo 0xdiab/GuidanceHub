@@ -9,7 +9,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navGuidancehub">
             {{-- Nav links --}}
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 pe-2 profile">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 pe-2  list-unstyled profile">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="profile" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">

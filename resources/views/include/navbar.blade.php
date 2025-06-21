@@ -48,7 +48,7 @@
                     </ul>
                 </div>
             @else
-                <ul class="profile px-4">
+                <ul class="profile list-unstyled px-4">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="profile" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
