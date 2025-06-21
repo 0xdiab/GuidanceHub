@@ -8,6 +8,7 @@ use App\Http\Controllers\MentorSessionController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SpecializationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\WebhookController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/mentor/session/{id}/reject', [MentorSessionController::class, 'reject'])->name('mentor.session.reject');
 
     Route::post('/sessions/{id}/create-zoom', [MentorSessionController::class, 'createZoomLink'])->name('sessions.createZoom');
+
+    //Reviews
+    Route::get('/reviews/{session_id}', [ReviewController::class, 'create'])->name('review.create');
+    Route::post('/reviews', [ReviewController::class, 'store'])->name('review.store');
 });
 
 require __DIR__ . '/auth.php';
