@@ -18,7 +18,7 @@
                     <a class="nav-link" href="{{ route('user.specialization.index') }}">Specializations</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link" href="{{ route('user.about') }}">About Us</a>
                 </li>
                 {{-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
