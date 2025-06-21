@@ -70,7 +70,7 @@ class User extends Authenticatable
 
     public function skills()
     {
-        return $this->belongsToMany(Skill::class, 'skill_user', 'mentor_id', 'skill_id')->withTimestamps();
+        return $this->belongsToMany(Skill::class, 'skill_user', 'user_id', 'skill_id');
     }
 
     public function specializations()
@@ -81,8 +81,8 @@ class User extends Authenticatable
     public function languages()
     {
         return $this->belongsToMany(Language::class, 'user_language')
-                    ->withPivot('proficiency')
-                    ->withTimestamps();
+            ->withPivot('proficiency')
+            ->withTimestamps();
     }
 
     // User have many reviews
