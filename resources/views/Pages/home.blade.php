@@ -40,17 +40,18 @@
                                     <h1>Grow Smarter, Not Alone.</h1>
                                     <p>Connect with experts who can help you reach the next level.</p>
 
-                                    <select id="mySelect">
+                                    {{-- <select id="mySelect">
                                         <option>Choose your specialization</option>
                                         @if ($specializations->count() > 0)
                                             @foreach ($specializations as $specialization)
                                                 <option value="{{ $specialization->id }}">
+                                                    {{ $specialization->name }}
                                                     <a class=""
-                                                        href="{{ route('user.specialization.show', ['id' => $specialization->id]) }}">{{ $specialization->name }}</a>
+                                                        href="{{ route('user.specialization.show', ['id' => $specialization->id]) }}"><i class="fas fa-right-arrow"></i></a>
                                                 </option>
                                             @endforeach
                                         @endif
-                                    </select>
+                                    </select> --}}
                                 </div>
                                 <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
                                     aria-labelledby="profile-tab" tabindex="0">
