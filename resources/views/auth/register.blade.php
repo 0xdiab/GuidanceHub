@@ -79,8 +79,7 @@
                                 $id = 1;
                             @endphp
                             @foreach ($specializations as $specialization)
-                                <option value="{{ $id++ }}"
-                                    {{ $user->specializations->contains('id', $specialization->id) == $specialization->id ? 'selected' : '' }}>
+                                <option value="{{ $id++ }}">
                                     {{ $specialization->name }}</option>
                             @endforeach
                         </select>
