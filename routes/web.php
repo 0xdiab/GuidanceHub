@@ -21,8 +21,13 @@ Route::get('/specializations/{id}', [SpecializationController::class, 'show'])->
 
 // About
 Route::get('/about', [AboutController::class, 'index'])->name('user.about');
-
 Route::get('/mentors/{id}', [MentorController::class, 'show'])->name('user.mentor.show');
+
+// Bookshelf
+Route::get('/bookshelf', function () {
+    return view('Pages.bookshelf');
+})->name('user.bookshelf');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
