@@ -101,7 +101,17 @@
                     {{-- About profile --}}
                     <div class="skills-profile rounded shadow-sm p-3 mb-5">
                         <h3>Skills</h3>
-                        {{-- <p>{{ $user }}</p> --}}
+                        @if ($user->skills->count() > 0)
+                            @foreach ($user->skills as $skill)
+                                <span>{{$user->skills->name}}</span>
+                            @endforeach
+                            <a class="text-dark" href="{{ route('profile.edit') }}"><i class="fas fa-plus-circle"></i>
+                                Add</a>
+                        @else
+                            <p>You are not submitted your skills.</p>
+                            <a class="text-dark" href="{{ route('profile.edit') }}"><i class="fas fa-plus-circle"></i>
+                                Add</a>
+                        @endif
                     </div>
 
                 </div>

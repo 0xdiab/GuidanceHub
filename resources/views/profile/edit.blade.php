@@ -175,8 +175,8 @@
                                                 <label for="accout-type">Account Type</label>
                                                 <select class="form-select" id="accout-type" name="account_type">
                                                     <option value="1"
-                                                        {{ $user->account_type == 'mentee' ? 'selected' : '' }}>
-                                                        mentee</option>
+                                                        {{ $user->account_type == 'mentor' ? 'selected' : '' }}>
+                                                        Mentor</option>
                                                     <option value="2"
                                                         {{ $user->account_type == 'mentee' ? 'selected' : '' }}>
                                                         Mentee (Defualt)</option>
@@ -225,7 +225,7 @@
                                     </div>
 
                                     <div class="form-group mt-4">
-                                        <button type="submit" class="btn btn-submit btn-login">Submit</button>
+                                        <button type="submit" class="btn btn-submit btn-dark">Submit</button>
                                     </div>
                                 </form>
                             </div>
