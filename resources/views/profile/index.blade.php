@@ -201,13 +201,13 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link border-0 text-muted" 
                                     id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab">
-                                Reviews ({{ $user->reviews_count ?? '30' }})
+                                Reviews ({{ $user->ratings->count() }})
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link border-0 text-muted" 
                                     id="availability-tab" data-bs-toggle="tab" data-bs-target="#availability" type="button" role="tab">
-                                Availability
+                                Details
                             </button>
                         </li>
                     </ul>
@@ -217,7 +217,7 @@
                         <div class="tab-pane fade show active" id="about" role="tabpanel">
                             <h4 class="mb-3">About Me</h4>
                             <p class="text-muted lh-lg">
-                                {{ $user->summary ?? "Greetings, fellow design aficionados! I'm delighted to have caught your interest in perusing my profile. I'm Nguyen Shane, a 24-year-old UI/UX designer hailing from the United Kingdom. My educational journey culminated in the attainment of a Bachelor's Degree in Graphic Design, with a specialization in User Interface and User Experience design. This qualification empowers me to delve into the realm of user-centered design, crafting engaging and intuitive experiences for digital..." }}
+                                {{ $user->summary ?: "" }}
                             </p>
                         </div>
                         <div class="tab-pane fade" id="experience" role="tabpanel">
@@ -233,7 +233,15 @@
                         </div>
                         <div class="tab-pane fade" id="reviews" role="tabpanel">
                             <h4 class="mb-3">Reviews</h4>
-                            <p class="text-muted">Reviews content goes here...</p>
+                            <div class="text-muted">
+                                @foreach ($reviews as $review)
+                                <div>
+                                    <strong>{{$review->user->name}}</strong>
+                                    <p class="text-">Rating:<span class="text-danger">{{$review->rating}}</span>/<span class="text-success">5</span</p>
+                                    <p>{{$review->comment}}</p>
+                                </div>
+                                @endforeach
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="availability" role="tabpanel">
                             <h4 class="mb-3">Availability</h4>
@@ -256,8 +264,8 @@
                     <div class="mb-3">
                         <small class="text-muted text-uppercase">EMAIL ADDRESS:</small>
                         <div class="mt-1">
-                            <a href="mailto:{{ $user->email ?? 'hello@nguyen.shane.com' }}" class="text-primary text-decoration-none">
-                                {{ $user->email ?? 'hello@nguyen.shane.com' }}
+                            <a href="mailto:{{ $user->email ?? '' }}" class="text-primary text-decoration-none">
+                                {{ $user->email ?? '' }}
                             </a>
                         </div>
                     </div>
@@ -272,8 +280,8 @@
                     <div class="mb-3">
                         <small class="text-muted text-uppercase">Github:</small>
                         <div class="mt-1">
-                            <a href="{{ $user->github_url?:'github.com' }}" class="text-danger text-decoration-none">
-                                {{ $user->github_url ?: 'github' }}
+                            <a href="{{ $user->github_url?:'' }}" class="text-danger text-decoration-none">
+                                {{ $user->github_url ?: '' }}
                             </a>
                         </div>
                     </div>

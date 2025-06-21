@@ -16,7 +16,8 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $userSkills = $user->skills;
-        return view('profile.index', compact('user', 'userSkills'));
+        $reviews = $user->ratings;
+        return view('profile.index', compact('user', 'userSkills', 'reviews'));
     }
     /**
      * Display the user's profile form.

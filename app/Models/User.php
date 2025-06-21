@@ -84,6 +84,12 @@ class User extends Authenticatable
                     ->withPivot('proficiency')
                     ->withTimestamps();
     }
+    
+    // ratings and comments
+    public function ratings() {
+        return $this->hasMany(Rating::class, 'mentor_id');
+    }
+    //
 
     // User have many reviews
     public function reviews()

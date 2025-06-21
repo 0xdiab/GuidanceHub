@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\Dashboard\AdminHomeController;
-use App\Http\Controllers\MentorSessionController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\SpecializationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebhookController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MentorSessionController;
+use App\Http\Controllers\SpecializationController;
+use App\Http\Controllers\Dashboard\AdminHomeController;
 
 Route::get('/', function () {
     return view('Pages.home');
@@ -34,6 +35,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/sessions/{id}', [MentorSessionController::class, 'show'])->name('sessions.show');
     Route::post('/webhooks/stripe', [WebhookController::class, 'handle']);
+
+    //Ratings
+    Route::get('/ratings/{session_id}', [RatingController::class, 'index'])->name('rating.index');
+    Route::post('/ratings', [RatingController::class, 'store'])->name('rating.store');
 });
 
 require __DIR__ . '/auth.php';

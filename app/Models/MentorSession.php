@@ -30,6 +30,12 @@ class MentorSession extends Model
         return $this->hasOne(Review::class, 'session_id');
     }
 
+    // ratings and comments
+    public function ratings() {
+        return $this->hasOne(Review::class, 'session_id');
+    }
+    //
+
     public function payment()
     {
         return $this->hasOne(Payment::class, 'session_id');
