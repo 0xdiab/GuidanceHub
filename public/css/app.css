@@ -26,7 +26,8 @@ p>a {
 }
 
 .btn-nav,
-.btn-become-mentor {
+.btn-become-mentor,
+.btn-dark {
     padding-right: 20px !important;
     padding-left: 20px !important;
     line-height: 1.3;
@@ -35,8 +36,15 @@ p>a {
 }
 
 .btn-nav:hover,
-.btn-become-mentor {
+.btn-become-mentor:hover,
+.btn-dark:hover {
+    background-color: var(--dark-color);
     color: var(--orange-color) !important;
+}
+
+.heading-section {
+    color: var(--dark-color);
+
 }
 
 /* End of Global Rules */
@@ -167,6 +175,49 @@ p>a {
 
 /* End of Homepage */
 
+/* Specializations */
+.specializations {}
+
+.specializations .specialization {}
+
+.specializations .specialization .specialization-info {}
+
+.specializations .specialization .specialization-info a {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--dark-color);
+    transition: all .25s ease-in-out;
+}
+
+.specializations .specialization .specialization-info a:hover {
+    color: var(--orange-color);
+}
+
+.specialization_details .mentor-card .card-header {
+    overflow: hidden;
+    height: 250px;
+    width: 100%;
+}
+
+.specialization_details .mentor-card .card-header img {
+    height: 100%;
+    width: 100%;
+}
+
+.specialization_details .mentor-card .card-body a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.specialization_details .mentor-card .card-body p {
+    color: #585858;
+    font-size: 16px;
+    margin-bottom: .5rem;
+}
+
+/* End of Specializations */
 
 /* sign section */
 .sign-section {

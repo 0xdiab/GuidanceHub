@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="header">
-                            <h1>{{ $specialization->name }}</h1>
+                            <h1 class="heading-section">{{ $specialization->name }}</h1>
                             <p>"Success is not final, failure is not fatal: It is the courage to continue that counts." –
                                 Winston Churchill</p>
                         </div>
@@ -31,32 +31,30 @@
                     @foreach ($mentors as $mentor)
                         <div class="col-md-3">
                             {{-- Card --}}
-                            <div class="card mentor-card">
+                            <div class="card mentor-card shadow-sm">
                                 {{-- card-header --}}
                                 <div class="card-header mentor-card-header p-0">
-                                    <img src="{{ asset('image/avatar.jpg') }}" alt="" class="img-fluid">
+                                    <img  class="img-fluid" 
+                                        src="{{ $mentor->image ? asset('storage/profile_images/' . $mentor->image) : asset('image/avatar.jpg') }}"
+                                        alt="{{ $mentor->name }}">
                                 </div>
                                 {{-- ./card-header --}}
                                 {{-- Card-body --}}
                                 <div class="card-body mentor-info text-center">
                                     <a class="" href="{{ route('user.mentor.show', $mentor->id) }}">{{ $mentor->name }}</a>
                                     <p>{{ $mentor->position }}</p>
-                                </div>
-                                {{-- ./Card-body --}}
+                                    <p class="price">${{$mentor->session_price}}</p>
 
-                                {{-- card-footer --}}
-                                <div class="card-footer">
+                                    {{-- Sessions book --}}
                                     <form action="{{ route('sessions.book', $mentor->id) }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="specialization_id" value="{{ $specialization->id }}">
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="submit" class="btn btn-dark">
                                             Book Now <i class="fa-solid fa-plus"></i>
                                         </button>
                                     </form>
-                                    {{-- <a href="{{ route('payment.checkout', $session->id) }}" class="btn">Book Now <i
-                                            class="fa-solid fa-plus"></i></a> --}}
                                 </div>
-                                {{-- ./card-footer --}}
+                                {{-- ./Card-body --}}
                             </div>
                             {{-- ./Card --}}
                         </div>

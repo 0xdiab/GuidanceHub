@@ -14,7 +14,7 @@
                 <div class="col-12">
                     {{-- specialization header --}}
                     <div class="specialization-header text-center py-4">
-                        <h1>Specializations</h1>
+                        <h1 class="heading-section">Specializations</h1>
                         <p>Discover our {{ $specializations_count }} categories. Each of them has dozens or even hundred of
                             mentors.</p>
                     </div>
@@ -28,7 +28,7 @@
                     @foreach ($specializations as $specialization)
                         <div class="col-md-3 col-6 mb-4">
                             {{-- Card --}}
-                            <div class="card specialization">
+                            <div class="card specialization shadow-sm p-4">
                                 {{-- Card-body --}}
                                 <div class="card-body specialization-info text-center">
                                     <a class="" href="{{ route('user.specialization.show', ['id' => $specialization->id]) }}">{{ $specialization->name }}</a>
