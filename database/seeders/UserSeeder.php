@@ -50,7 +50,7 @@ class UserSeeder extends Seeder
         ];
 
         foreach ($users as $user) {
-            User::create([
+            $user = User::create([
                 "name"          => $user['name'],
                 "email"         => $user["email"],
                 "password"      => $user["password"],
@@ -65,6 +65,7 @@ class UserSeeder extends Seeder
                 "gender"        => $user["gender"],
                 "account_type"  => $user["account_type"],
             ]);
+
         }
     }
 }
