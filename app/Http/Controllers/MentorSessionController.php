@@ -60,7 +60,7 @@ class MentorSessionController extends Controller
         });
 
         // Just confirmed session without paid
-        $confirmedSessions = $sessions->filter(function ($session) {
+        $approvedSessions = $sessions->filter(function ($session) {
             return $session->status == "confirmed" &&
                 $session->is_paid == 0 &&
                 ($session->session_link === 'TBD' || $session->session_link === null);
@@ -73,7 +73,7 @@ class MentorSessionController extends Controller
                 ($session->session_link !== 'TBD' || $session->session_link !== null);
         });
 
-        return view('Pages.sessions.allSessions', compact("pendingSessions", "confirmedSessions", "cancelledSessions", "zoomSessions"));
+        return view('Pages.sessions.allSessions', compact("pendingSessions", "approvedSessions", "cancelledSessions", "zoomSessions"));
         // return ("menteeSessions");
     }
 
